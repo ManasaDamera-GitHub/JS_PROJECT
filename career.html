@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Apply background image to the body */
+        body {
+            /* font-family: 'Poppins', sans-serif; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            background-image: url("./career.jpg");
+            /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Ensures the background image stays fixed */
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            background-color: #61605d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b5b4b2;
+            color: black;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+        }
+
+        header a,
+        header p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        header nav {
+            margin: 0 10px;
+
+        }
+
+        header nav a,
+        #pages {
+            font-size: 16px;
+            transition: color 0.3s ease;
+
+        }
+
+
+        header nav a:hover,
+        header p:hover {
+            color: #987070;
+            cursor: pointer;
+        }
+
+        /* Search Bar */
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        #searchBar {
+            width: 50%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #987070;
+            border-radius: 25px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #searchBar:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Dropdown container */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* "Pages" text */
+        #pages {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            margin: 0;
+            /* padding: 10px 15px; */
+            /* background-color: #f9f9f9; */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #pages:hover {
+            color: #987070;
+        }
+
+        /* Dropdown menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            /* Position below the "Pages" text */
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Hidden by default */
+            min-width: 150px;
+            z-index: 1000;
+            /* Ensure it's on top of other elements */
+        }
+
+        /* Links inside the dropdown */
+        .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            /* Apply font family */
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover effect for dropdown links */
+        .dropdown a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown-container:hover .dropdown {
+            display: block;
+        }
+
+
+        .cont {
+            height: 100vh;
+            /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+            padding: 50px;
+            color: white;
+            position: relative;
+            /* Required for z-index */
+            z-index: 1;
+            /* Ensures content is above the background */
+            text-align: start;
+        }
+
+        /* Add a semi-transparent overlay to #cont1 */
+        .cont::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black overlay */
+            z-index: -1;
+            /* Places the overlay behind the content */
+
+        }
+
+        /* Ensure other containers have a solid background */
+        #cont2,
+        #cont3,
+        #contact,
+        .Testimonial,
+        #blog,
+        footer {
+            background-color: #f9f9f9;
+            /* Solid background for other sections */
+            position: relative;
+            z-index: 2;
+            /* Ensures these sections are above the background */
+        }
+
+       
+        .cont h1 {
+            color: #fff;
+            font-size: 36px;
+            margin-bottom: 20px;
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(-20px);
+            /* Start slightly above */
+            animation: fadeInDown 1.2s ease-out 1.5s forwards;
+            
+            /* Animation */
+        }
+
+        .cont p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            animation: fadeInUp 1.2s ease-out 2.5s forwards;
+            /* Animation */
+            text-align: left;
+        }
+
+        /* Keyframes for h3 (fade in and move down) */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for p (fade in and move up) */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+.main {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    /* background-color: #fff; */
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    /* color: #fff; */
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.msn, .vsn {
+    background: rgba(255, 255, 255, 0.9);
+    /* background-color: transparent; */
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Scroll Animations */
+.msn.visible, .vsn.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover Effects */
+.msn:hover, .vsn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.op {
+    /* max-width: 1200px; */
+    /* margin: 50px auto; */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    background: #fff; /* White background for the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+.op h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    position: relative;
+    animation: fadeInDown 1s ease;
+}
+
+.op h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #1abc9c;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.jb {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.5s ease;
+}
+
+.jb:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Typography */
+.jb p {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.jb p:first-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.jb p:nth-child(2) {
+    font-weight: bold;
+    color: #1abc9c;
+}
+
+.jb p:nth-child(3) {
+    font-style: italic;
+    color: #777;
+}
+
+/* Apply Now Button */
+.apply-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #2c3e50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #1abc9c;
+    transform: scale(1.05);
+}
+
+/* Hide Background When .op is Active */
+body.op-active {
+    background-color: transparent; /* Hide background */
+}
+
+.op.op-active {
+    opacity: 1; /* Ensure the container is fully visible */
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .op {
+        grid-template-columns: 1fr;
+    }
+
+    .op h1 {
+        font-size: 2rem;
+    }
+}
+
+.JU {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, #2c3e50, #1abc9c);
+    color: #fff;
+    border-radius: 10px;
+    /* margin: 50px auto; */
+    /* max-width: 1700px; */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeIn 1.5s ease;
+}
+
+.JU > div:first-child {
+    padding: 60px 40px;
+    max-width: 600px;
+    animation: fadeInLeft 1s ease;
+}
+
+.JU > div:last-child {
+    flex: 1;
+    animation: fadeInRight 1s ease;
+}
+
+.JU img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.JU p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #fff;
+    animation: slideInDown 1s ease;
+}
+
+.JU h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+    animation: fadeInUp 1s ease;
+}
+
+.JU p:last-child {
+    font-size: 1.1rem;
+    color: #f0f0f0;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.2s ease;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .JU {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .JU > div:first-child {
+        padding: 40px 20px;
+    }
+
+    .JU h1 {
+        font-size: 2rem;
+    }
+
+    .JU p:last-child {
+        font-size: 1rem;
+    }
+
+    .JU img {
+        max-height: 300px;
+    }
+}
+/* General Footer Styles */
+footer {
+background-color: #022249; /* Dark blue background */
+color: #ffffff; /* White text color */
+padding: 40px 20px;
+font-family: Arial, sans-serif;
+}
+
+.icons {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 20px;
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.foot {
+flex: 1 1 300px;
+}
+
+.foot p {
+font-size: 1.5rem;
+font-weight: bold;
+margin-bottom: 20px;
+}
+
+.icon-container {
+margin-bottom: 20px;
+}
+
+.icon-container i {
+margin-right: 10px;
+color: #ffffff;
+}
+
+.icons-container {
+display: flex;
+gap: 15px;
+margin-top: 20px;
+}
+
+.icons-container i {
+color: #ffffff;
+transition: color 0.3s ease;
+}
+
+.icons-container i:hover {
+color: #007bff; /* Blue color on hover */
+}
+
+.end {
+flex: 1 1 300px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.end input[type="text"] {
+padding: 12px;
+font-size: 1rem;
+border: 1px solid #ccc;
+border-radius: 8px;
+outline: none;
+width: 100%;
+max-width: 300px;
+}
+
+.end .get {
+padding: 12px 20px;
+font-size: 1rem;
+background-color: #007bff; /* Blue button */
+color: #ffffff;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.end .get:hover {
+background-color: #0056b3; /* Darker blue on hover */
+}
+
+.links-bottom {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+gap: 20px;
+max-width: 1200px;
+margin: 40px auto 0;
+}
+
+.links-bottom div {
+flex: 1 1 200px;
+}
+
+.links-bottom h3 {
+font-size: 1.25rem;
+margin-bottom: 15px;
+}
+
+.links-bottom p {
+line-height: 1.6;
+color: #e0e0e0; /* Light gray for better readability */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.icons {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.end {
+align-items: center;
+}
+
+.end input[type="text"] {
+max-width: 100%;
+}
+
+.links-bottom {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+}
+
+@media (max-width: 480px) {
+.foot p {
+font-size: 1.25rem;
+}
+
+.icon-container {
+font-size: 0.9rem;
+}
+
+.icons-container {
+font-size: 1.5rem;
+}
+
+.end input[type="text"] {
+font-size: 0.9rem;
+}
+
+.end .get {
+font-size: 0.9rem;
+}
+
+.links-bottom h3 {
+font-size: 1.1rem;
+}
+
+.links-bottom p {
+font-size: 0.9rem;
+}
+}
+
+    </style>
+</head>
+
+<body>
+    <header style="display: flex; justify-content: space-between;">
+        <a href="./index.html"> <i class="fas fa-graduation-cap" style="font-size: 48px; color: #2c3e50;"></i>NexGen Institute</a>
+
+        <input type="text" id="searchBar" placeholder="Search by name...">
+        <ul id="result"></ul>
+        <div class="subh-1" style="display: flex; gap: 20px;">
+            <nav><a href="#one">Home</a></nav>
+            <nav><a href="#two">About</a></nav>
+            <nav><a href="#three">Course</a></nav>
+            <div class="dropdown-container">
+                <p id="pages">Pages </p>
+                <div class="dropdown" id="dropdownMenu">
+                    <a href="./pricing.html">Pricing</a>
+                    <a href="./career.html">Career</a>
+                    <a href="./teachers.html">Teacher</a>
+                </div>
+            </div>
+            <nav><a href="./index.html">Contact Us</a></nav>
+        </div>
+        <button onclick="login()">login</button>
+    </header>
+    <div class="cont" id="cont" >
+        <h1>Career</h1>
+        <p>HOME > Career</p>
+    </div>
+    <div class="main">
+        <div class="msn">
+            <h1>Mission</h1>
+            <p>Our mission is to empower learners worldwide by providing accessible, affordable, and high-quality education that transforms lives and unlocks potential. We are committed to breaking down barriers to learning by leveraging cutting-edge technology to create personalized, engaging, and inclusive educational experiences. Whether it’s upskilling for a career, exploring a new passion, or achieving academic excellence, we aim to make learning flexible, fun, and future-ready for everyone, everywhere.</p>
+        </div>
+        <div class="vsn">
+            <h1>Vision</h1>
+            <p>Our mission is to empower learners worldwide by providing accessible, affordable, and high-quality education that transforms lives and unlocks potential. We are committed to breaking down barriers to learning by leveraging cutting-edge technology to create personalized, engaging, and inclusive educational experiences. Whether it’s upskilling for a career, exploring a new passion, or achieving academic excellence, we aim to make learning flexible, fun, and future-ready for everyone, everywhere.</p>
+        </div>
+    </div>
+    <div class="op">
+        <div><h1>Explore Our Open Positions</h1>
+        <div>
+            <div class="jb">
+                <p>Instructional Designer</p>
+                <p>Salary: </p>
+                <p> Full-Time</p>
+                <p>Design and develop engaging online courses using cutting-edge e-learning tools. Collaborate with SMEs to create impactful learning experiences.</p>
+                <a href="mailto:careers@elearningplatform.com?subject=Application for E-Learning Developer" class="apply-button">Apply Now</a>
+            </div>
+            <div class="jb">
+                <p>Content Creator (E-Learning)</p>
+                <p>Salary: </p>
+                <p>Full-Time</p>
+                <p> Create high-quality educational content for online courses. Collaborate with SMEs to ensure accuracy and engagement.</p>
+                <a href="mailto:careers@elearningplatform.com?subject=Application for Content Creator" class="apply-button">Apply Now</a>
+            </div>
+            <div class="jb">
+                <p> Customer Support Specialist</p>
+                <p>Salary:</p>
+                <p>Part-Time</p>
+                <p>Provide exceptional support to learners and instructors. Troubleshoot technical issues and assist with platform navigation.</p>
+                <a href="mailto:careers@elearningplatform.com?subject=Application for Customer Support Specialist" class="apply-button">Apply Now</a>
+            </div>
+            <div class="jb">
+                <p>Marketing Manager</p>
+                <p>Salary</p>
+                <p>Full-Time</p>
+                <p>Develop and execute digital marketing strategies to promote the e-learning platform and drive user engagement.</p>
+                <a href="mailto:careers@elearningplatform.com?subject=Application for Marketing Manager" class="apply-button">Apply Now</a>
+            </div>
+            <div class="jb">
+                <p>Data Analyst</p>
+                <p>Salary</p>
+                <p>Full-Time</p>
+                <p>Analyze user data to provide insights and improve the platform’s effectiveness. Create reports and dashboards for key metrics.</p>
+                <a href="mailto:careers@elearningplatform.com?subject=Application for Data Analyst" class="apply-button">Apply Now</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="JU">
+        <div>
+            <p>JOIN US</p>
+        <h1>Shape the Future: Join Our Teaching Team</h1>
+        <p>Ready to grow your career while making a difference? Join our dynamic team and help us create innovative learning experiences that inspire and empower. Together, we can build a brighter future for education.</p>
+        </div>
+        <div><img src="./career2.webp" alt="img"></div>
+    </div>
+
+
+<footer>
+        <div class="icons">
+            <div class="foot">
+                <p> <img src="" alt="">Eduvera</p>
+                <div class="icon-container">
+                    <i class="fas fa-phone"></i> +123-456-7890<br>
+                    <i class="fas fa-envelope"></i> hello@reallygreatsite.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Anywhere St., Any City, ST 12345
+                </div>
+                <div class="icons-container" style="font-size: 2rem;">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="end">
+                <input type="text" placeholder="Email Address">
+                <button type="submit" class="get">SUBSCRIBE</button>
+            </div>
+        </div>
+        <div class="links-bottom">
+            <div>
+                <h3>Quick Links</h3>
+                <p>Home<br>
+                    About<br>
+                    Services<br>
+                    Contact us<br>
+                    FAQ's</p>
+            </div>
+            <div>
+                <h3>Useful Links</h3>
+                <p>Privacy Policy<br>
+                    Terms & Conditions<br>
+                    Disclaimer<br>
+                    Support<br>
+                    Help Center</p>
+            </div>
+            <div>
+                <h3>Working Hours</h3>
+                <p>Monday - Friday<br>
+                    9AM - 3 PM<br><br>
+                    Weekend<br>
+                    Closed</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const sections = document.querySelectorAll('.msn, .vsn');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3 // Trigger when 30% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing after animation
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const opContainer = document.querySelector('.op');
+    const body = document.body;
+
+    // Add event listener to toggle background
+    opContainer.addEventListener('click', function () {
+        body.classList.toggle('op-active');
+    });
+});
+    </script>
+</body>
+
+</html>

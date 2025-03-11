@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pricing page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Apply background image to the body */
+        body {
+            /* font-family: 'Poppins', sans-serif; */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #333;
+            background-image: url("./price2.avif");
+            /* Replace with your image path */
+            background-size: cover;
+            /* background-position: center; */
+            background-attachment: fixed;
+            /* Ensures the background image stays fixed */
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            background-color: #61605d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b5b4b2;
+            color: black;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+        }
+
+        header a,
+        header p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        header nav {
+            margin: 0 10px;
+
+        }
+
+        header nav a,
+        #pages {
+            font-size: 16px;
+            transition: color 0.3s ease;
+
+        }
+
+
+        header nav a:hover,
+        header p:hover {
+            color: #987070;
+            cursor: pointer;
+        }
+
+        /* Search Bar */
+        .search-container {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        #searchBar {
+            width: 50%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #987070;
+            border-radius: 25px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #searchBar:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        /* Dropdown container */
+        .dropdown-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* "Pages" text */
+        #pages {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            margin: 0;
+            /* padding: 10px 15px; */
+            /* background-color: #f9f9f9; */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        #pages:hover {
+            color: #987070;
+        }
+
+        /* Dropdown menu */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            /* Position below the "Pages" text */
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Hidden by default */
+            min-width: 150px;
+            z-index: 1000;
+            /* Ensure it's on top of other elements */
+        }
+
+        /* Links inside the dropdown */
+        .dropdown a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            /* Apply font family */
+            font-size: 14px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Hover effect for dropdown links */
+        .dropdown a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Show dropdown on hover */
+        .dropdown-container:hover .dropdown {
+            display: block;
+        }
+
+        .cont {
+            height: 100vh;
+            /* Full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            flex-direction: column;
+            padding: 50px;
+            color: white;
+            position: relative;
+            /* Required for z-index */
+            z-index: 1;
+            /* Ensures content is above the background */
+            text-align: start;
+        }
+
+        /* Add a semi-transparent overlay to #cont1 */
+        .cont::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent black overlay */
+            z-index: -1;
+            /* Places the overlay behind the content */
+
+        }
+
+        /* Ensure other containers have a solid background */
+        #cont2,
+        #cont3,
+        #contact,
+        .Testimonial,
+        #blog,
+        footer {
+            background-color: #f9f9f9;
+            /* Solid background for other sections */
+            position: relative;
+            z-index: 2;
+            /* Ensures these sections are above the background */
+        }
+
+        .cont h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cont p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .cont h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(-20px);
+            /* Start slightly above */
+            animation: fadeInDown 1.2s ease-out 1.5s forwards;
+            /* Animation */
+        }
+
+        .cont p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(20px);
+            /* Start slightly below */
+            animation: fadeInUp 1.2s ease-out 2.5s forwards;
+            /* Animation */
+            text-align: left;
+        }
+
+        /* Keyframes for h3 (fade in and move down) */
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Keyframes for p (fade in and move up) */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Main Container Styling */
+        .main-container {
+            padding: 60px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .main-container h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .main-container h2 {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* Plan Container Styling */
+        .plan {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Basic Plan Styling */
+        .basic {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .basic:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .basic h3 {
+            font-size: 1.75rem;
+            color: #4a4646;
+            margin-bottom: 20px;
+        }
+
+        .basic h1 {
+            font-size: 3rem;
+            color: #431901;
+            margin-bottom: 10px;
+        }
+
+        .basic p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .basic p:last-of-type {
+            color: #000;
+            /* font-weight: bold; */
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .basic p:last-of-type:hover {
+            color: #0056b3;
+        }
+
+        /* Add a subtle animation for the price */
+        @keyframes priceBounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .basic h1 {
+            animation: priceBounce 2s infinite;
+        }
+
+        .basic:hover {
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .plan {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .basic {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container h1 {
+                font-size: 2rem;
+            }
+
+            .main-container h2 {
+                font-size: 1.25rem;
+            }
+
+            .basic h3 {
+                font-size: 1.5rem;
+            }
+
+            .basic h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .features p {
+            font-size: 1em;
+            color: #987070;
+            text-align: start;
+            font-weight: bold;
+        }
+
+        .features {
+            margin: 20px;
+            padding: 10px;
+        }
+
+        .Testimonial {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(50px);
+            /* Move it down initially */
+            transition: opacity 1s ease, transform 2s ease;
+        }
+
+        .Testimonial.visible {
+            opacity: 1;
+            /* Make it visible */
+            transform: translateY(0);
+            /* Move it to its original position */
+        }
+
+        .Testimonial h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .Testimonial p {
+            color: #987070;
+            font-size: 2.3rem;
+            font-weight: bold;
+        }
+
+        .Testimonial h2 {
+            font-size: 1.5rem;
+            color: #3F4F44;
+            margin-bottom: 20px;
+        }
+
+        #test {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        #test img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        #users {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #users>div {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            text-align: left;
+        }
+
+        #users p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+            text-align: justify;
+            padding: 10px;
+        }
+
+        #users img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        #users>div>div {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .typing-effect {
+            width: fit-content;
+            /* Ensures the width fits the content */
+            overflow: hidden;
+            /* Hides overflow text */
+            border-right: 2px solid #000;
+            /* Creates the typing cursor */
+            white-space: nowrap;
+            /* Prevents text from wrapping */
+            margin: 0 auto;
+            /* Centers the text */
+            letter-spacing: 2px;
+            /* Adds spacing between letters for better effect */
+            font-style: italic;
+            width: 20ch;
+            text-wrap: nowrap;
+            animation: typing 2s steps(20) infinite alternate-reverse;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0ch;
+            }
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            /* Position below the "Pages" text */
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            /* Hidden by default */
+            min-width: 150px;
+            z-index: 1000;
+            /* Ensure it's on top of other elements */
+        }
+
+        /* Toggle Button Styling */
+        .toggle {
+            cursor: pointer;
+            font-size: 1.5rem;
+            /* color: #2c3e50; */
+            padding: 15px;
+            /* background-color: #fff; */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            background-color: #03346E;
+            color: #fff;
+        }
+
+        .toggle:hover {
+            background-color: #0b4893;
+            border-color: #ccc;
+        }
+
+        .toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Dropdown Styling */
+        .Dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            font-size: 1.2rem;
+        }
+
+        .Dropdown.active {
+            max-height: 200px;
+            /* Adjust based on content height */
+            padding: 15px;
+            border-color: #2c3e50;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Rotate Chevron Icon */
+        .toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        /* General FAQ Styling */
+        .faq {
+            display: flex;
+            /* Add Flexbox to the parent container */
+            gap: 20px;
+            /* Add spacing between the image and FAQ content */
+            max-width: 1400px;
+            /* Adjust based on your design */
+            margin: 0 auto;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 2rem;
+
+        }
+
+        /* FAQ Image Styling */
+        .faq .faqi {
+            flex: 1;
+            /* Allow the image to take up 1 part of the available space */
+            width: fit-content;
+            /* Adjust based on your image size */
+
+        }
+
+        .faq .faqi img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* FAQ Content Styling */
+        .faq>div {
+            flex: 2;
+            /* Allow the FAQ content to take up 2 parts of the available space */
+        }
+
+        .faq h3 {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .faq h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .faq-items {
+            margin-top: 10rem;
+        }
+
+        #contact {
+            text-align: center;
+            background-color: #03346E;
+            /* Applied the background color */
+            padding: 80px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            margin: 50px auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #contact p:first-child {
+            font-size: 2.3em;
+            font-weight: 600;
+            color: #ffffff;
+            /* Changed to white for better contrast with the new background */
+            margin-bottom: 15px;
+        }
+
+        #contact p:nth-child(2) {
+            font-size: 1.5em;
+            color: #e0e0e0;
+            /* Lighter color for better readability on dark background */
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        input[type="email"] {
+            width: 70%;
+            /* max-width: 400px; */
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+
+        input[type="email"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="email"]::placeholder {
+            color: #999;
+            font-size: 14px;
+        }
+
+        #contact button {
+            margin-top: 15px;
+        }
+
+        /* Responsive Design for Different Screens */
+        @media (max-width: 768px) {
+            #contact {
+                padding: 60px 15px;
+                /* Adjusted padding for smaller screens */
+            }
+
+            #contact p:first-child {
+                font-size: 18px;
+                /* Slightly smaller font size for smaller screens */
+            }
+
+            #contact p:nth-child(2) {
+                font-size: 14px;
+                /* Slightly smaller font size for smaller screens */
+            }
+
+            input[type="email"] {
+                padding: 10px 15px;
+                /* Adjusted padding for smaller screens */
+                font-size: 14px;
+                /* Slightly smaller font size for smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #contact {
+                padding: 40px 10px;
+                /* Further adjusted padding for very small screens */
+            }
+
+            #contact p:first-child {
+                font-size: 16px;
+                /* Even smaller font size for very small screens */
+            }
+
+            #contact p:nth-child(2) {
+                font-size: 12px;
+                /* Even smaller font size for very small screens */
+            }
+
+            input[type="email"] {
+                padding: 8px 12px;
+                /* Further adjusted padding for very small screens */
+                font-size: 12px;
+                /* Even smaller font size for very small screens */
+            }
+        }
+
+        /* General Footer Styles */
+        footer {
+            background-color: #022249;
+            /* Dark blue background */
+            color: #ffffff;
+            /* White text color */
+            padding: 40px 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .icons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .foot {
+            flex: 1 1 300px;
+        }
+
+        .foot p {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+        }
+
+        .icon-container i {
+            margin-right: 10px;
+            color: #ffffff;
+        }
+
+        .icons-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .icons-container i {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .icons-container i:hover {
+            color: #007bff;
+            /* Blue color on hover */
+        }
+
+        .end {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .end input[type="text"] {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            width: 100%;
+        }
+
+        .end .get {
+            padding: 12px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            /* Blue button */
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 30%;
+        }
+
+        .end .get:hover {
+            background-color: #0056b3;
+            /* Darker blue on hover */
+        }
+
+        .links-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+        }
+
+        .links-bottom div {
+            flex: 1 1 200px;
+        }
+
+        .links-bottom h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        .links-bottom p {
+            line-height: 1.6;
+            color: #e0e0e0;
+            /* Light gray for better readability */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .icons {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .end {
+                align-items: center;
+            }
+
+            .end input[type="text"] {
+                max-width: 100%;
+            }
+
+            .links-bottom {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .foot p {
+                font-size: 1.25rem;
+            }
+
+            .icon-container {
+                font-size: 0.9rem;
+            }
+
+            .icons-container {
+                font-size: 1.5rem;
+            }
+
+            .end input[type="text"] {
+                font-size: 0.9rem;
+            }
+
+            .end .get {
+                font-size: 0.9rem;
+            }
+
+            .links-bottom h3 {
+                font-size: 1.1rem;
+            }
+
+            .links-bottom p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="display: flex; justify-content: space-between;">
+        <a href="../index.html"><i class="fas fa-graduation-cap" style="font-size: 48px; color: #2c3e50;"></i>NexGen Institute</a>
+
+        <input type="text" id="searchBar" placeholder="Search by name...">
+        <ul id="result"></ul>
+        <div class="subh-1" style="display: flex; gap: 20px;">
+            <nav><a href="./index.html">Home</a></nav>
+            <nav><a href="./index.html">About</a></nav>
+            <nav><a href="./index.html">Course</a></nav>
+            <div class="dropdown-container">
+                <p id="pages">Pages </p>
+                <div class="dropdown" id="dropdownMenu">
+                    <a href="./pricing.html">Pricing</a>
+                    <a href="./career.html">Career</a>
+                    <a href="./teachers">Teacher</a>
+                </div>
+            </div>
+            <nav><a href="./index.html">Contact Us</a></nav>
+        </div>
+        <button onclick="login()">login</button>
+    </header>
+    <div class="cont" id="cont">
+        <h1>PRICING</h1>
+        <p>HOME > Pricing</p>
+    </div>
+    <div class="main-container">
+        <h1>Pricing</h1>
+        <h2>Choose Your Plan </h2>
+        <div class="plan">
+            <div class="plan">
+                <div class="basic">
+                    <h3>FREE</h3>
+                    <h1>$0</h1>
+                    <p>PER MONTH</p>
+                    <p></p>
+                    <div class="features">
+                        <p>Access to Basic Courses</p>
+                        <p>Ad-supported experience</p>
+                        <p>1 Quiz per Course</p>
+                        <p>GET PLAN</p>
+                    </div>
+
+                </div>
+                <div class="basic">
+                    <h3>Standard Plan</h3>
+                    <h1>$12</h1>
+                    <p>PER MONTH</p>
+                    <p>Build monthly or annually.Cancel any time.</p>
+                    <div class="features">
+                        <p>All Basic Courses</p>
+                        <p>Ad-Free Experience</p>
+                        <p>Unlimited Quizzes</p>
+                        <p>Monthly Webinars</p>
+                        <p>GET PLAN</p>
+                    </div>
+
+                </div>
+                <div class="plan">
+                    <div class="basic">
+                        <h3>Premium Plan</h3>
+                        <h1>$28</h1>
+                        <p>PER MONTH</p>
+                        <p>Build monthly or annually.Cancel any time.</p>
+                        <div class="features">
+                            <p>All Courses</p>
+                            <p>Ad-Free Experience</p>
+                            <p>Unlimited Quizzes and Exams</p>
+                            <p>Professional Certificates</p>
+                            <p>Advanced Analytics</p>
+                            <p>GET PLAN</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Testimonial">
+        <p>Testimonial</p>
+        <h2 class="typing-effect">What our learners Say</h2>
+        <div id="test">
+            <div><img src="./img5.jpg"></div>
+            <div id="users">
+                <div>
+                    <p>"This course was exactly what I needed! The lessons were clear, engaging, and easy to follow. The
+                        hands-on exercises helped me build confidence in my skills. Highly recommended!"</p>
+                    <div><img src="img3.avif" alt="">
+                        <p>Priya Sharma</p>
+                    </div>
+                </div>
+                <div>
+                    <p>"The best online course I’ve taken! The instructor explains concepts in a way that makes them
+                        easy to understand. Plus, the support from the community was amazing."</p>
+                    <div><img src="./img4.jpg" alt="">
+                        <p>Rahul</p>
+                    </div>
+                </div>
+                <div>
+                    <p>"I had no prior experience, but this course made learning so simple. The step-by-step approach
+                        and real-world examples made all the difference. I now feel job-ready!"</p>
+                    <div><img src="./img3.avif" alt="">
+                        <p>Ananya</p>
+                    </div>
+                </div>
+
+                <div>
+                    <p>"A game-changer! This course helped me upskill and land a better job. The interactive content
+                        kept me engaged, and I loved how practical the assignments were."</p>
+                    <div><img src="./img4.jpg" alt="">
+                        <p>Arjun</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="faq">
+        <div class="faqi">
+            <h3>FAQs</h3>
+            <h1>Frequently Asked Questions</h1>
+            <img src="./faq.jpg" alt="faq image">
+        </div>
+        <div class="faq-items">
+            <!-- FAQ Item 1 -->
+            <p class="toggle">What types of courses do you offer? <i class="fas fa-chevron-down"></i></p>
+            <div class="Dropdown">
+                <p>We offer a wide range of online courses in categories such as business management, technology,
+                    agriculture business, visual design, and finance. Each course is designed to provide in-depth
+                    knowledge
+                    and practical skills to help you succeed in your chosen field.</p>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <p class="toggle">How do I enroll in a course? <i class="fas fa-chevron-down"></i></p>
+            <div class="Dropdown">
+                <p>To enroll in a course, simply visit our website, select the course you're interested in, and follow
+                    the
+                    enrollment instructions.</p>
+            </div>
+            <p class="toggle">What are the payment options for courses? <i class="fas fa-chevron-down"></i></p>
+            <div class="Dropdown">
+                <p>We offer various payment options to suit your needs, including credit/debit cards, PayPal, and bank
+                    transfers. For some courses, we also provide installment plans. Detailed information about payment
+                    methods is available during the checkout process.</p>
+            </div>
+            <p class="toggle">Can I get a refund if I'm not satisfied with the course? <i
+                    class="fas fa-chevron-down"></i>
+            </p>
+            <div class="Dropdown">
+                <p>Yes, we offer a satisfaction guarantee. If you are not satisfied with a course, you can request a
+                    refund
+                    within the first 14 days of enrollment. Please review our refund policy for more details and
+                    instructions on how to request a refund.</p>
+            </div>
+            <p class="toggle">Do you provide certifcates upon course completion? <i class="fas fa-chevron-down"></i></p>
+            <div class="Dropdown">
+                <p>Yes, upon successful completion of a course, you will receive a digital certificate. This certificate
+                    can
+                    be downloaded and shared on your professional networks or added to your resume to showcase your new
+                    skills and knowledge.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="contact">
+        <p>CONTACT US</p>
+        <p>Prepared to Start Your Journey? Let's Discuss!</p>
+        <input type="email" placeholder="Email Address">
+        <button class="get" id="get">GET STARTED</button>
+    </div>
+    <footer>
+        <div class="icons">
+            <div class="foot">
+                <p> <img src="" alt="">Eduvera</p>
+                <div class="icon-container">
+                    <i class="fas fa-phone"></i> +123-456-7890<br>
+                    <i class="fas fa-envelope"></i> hello@reallygreatsite.com<br>
+                    <i class="fas fa-map-marker-alt"></i> 123 Anywhere St., Any City, ST 12345
+                </div>
+                <div class="icons-container" style="font-size: 2rem;">
+                    <i class="fab fa-facebook"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-linkedin"></i>
+                </div>
+            </div>
+            <div class="end">
+                <input type="text" placeholder="Email Address">
+                <button type="submit" class="get">SUBSCRIBE</button>
+            </div>
+        </div>
+        <div class="links-bottom">
+            <div>
+                <h3>Quick Links</h3>
+                <p>Home<br>
+                    About<br>
+                    Services<br>
+                    Contact us<br>
+                    FAQ's</p>
+            </div>
+            <div>
+                <h3>Useful Links</h3>
+                <p>Privacy Policy<br>
+                    Terms & Conditions<br>
+                    Disclaimer<br>
+                    Support<br>
+                    Help Center</p>
+            </div>
+            <div>
+                <h3>Working Hours</h3>
+                <p>Monday - Friday<br>
+                    9AM - 3 PM<br><br>
+                    Weekend<br>
+                    Closed</p>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+        // for background image
+        window.addEventListener("scroll", function () {
+            const cont = document.getElementById("cont");
+            const body = document.body;
+
+            // Get the height of #cont1
+            const contHeight = cont.offsetHeight;
+
+            // Check if the user has scrolled past #cont1
+            if (window.scrollY > contHeight) {
+                body.style.backgroundImage = "none"; // Remove background image
+            } else {
+                body.style.backgroundImage = 'url("./price2.avif")'; // Restore background image
+            }
+        });
+        document.addEventListener("scroll", function () {
+            const testimonialSection = document.querySelector(".Testimonial");
+            const sectionPosition = testimonialSection.getBoundingClientRect();
+
+            // Check if the section is in the viewport
+            if (sectionPosition.top < window.innerHeight - 100 && sectionPosition.bottom >= 0) {
+                testimonialSection.classList.add("visible");
+            }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.toggle').forEach((toggle) => {
+                toggle.addEventListener('click', function () {
+                    const dropdown = this.nextElementSibling;
+                    dropdown.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            });
+        });
+        document.querySelectorAll(".get").forEach(get =>
+            get.addEventListener("click", () => {
+                // Create a toast message element
+                const toast = document.createElement("div");
+                toast.textContent = "Please login...";
+                toast.style.position = "fixed";
+                toast.style.top = "100px";
+                toast.style.right = "20px";
+                toast.style.backgroundColor = "#AD49E1";
+                toast.style.color = "#fff";
+                toast.style.padding = "10px 20px";
+                toast.style.borderRadius = "5px";
+                toast.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.1)";
+                toast.style.zIndex = "1000";
+                toast.style.opacity = "0";
+                toast.style.transition = "opacity 0.5s ease";
+
+                // Append the toast to the body
+                document.body.appendChild(toast);
+
+                // Fade in the toast
+                setTimeout(() => {
+                    toast.style.opacity = "1";
+                }, 100);
+
+                // Fade out and remove the toast after 3 seconds
+                setTimeout(() => {
+                    toast.style.opacity = "0";
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 500); // Wait for the fade-out transition to complete
+                }, 3000);
+            })
+        );
+
+    </script>
+</body>
+
+</html>
