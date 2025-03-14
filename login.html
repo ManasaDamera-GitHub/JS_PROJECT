@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
+    <title>Student Login page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -110,7 +110,13 @@
             background: #0056b3;
             transform: scale(1.05);
         }
-
+        select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
         /* General button styles */
         button {
             border: none;
@@ -210,7 +216,7 @@
     <div id="div">
         <h3>Student Login</h3><br>
         <form id="login" action="./filter.html">
-            <label for="Username">Email</label>
+                    <label for="Username">Email</label>
             <input type="text" id="name">
             <span id="nameError"></span>
             <br>

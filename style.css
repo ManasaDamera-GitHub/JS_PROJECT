@@ -12,9 +12,6 @@ html {
 /* Apply background image to the body */
 body {
     /* font-family: 'Poppins', sans-serif; */
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     color: #333;
     background-image: url("./img7.jpg");
     /* Replace with your image path */
@@ -73,7 +70,7 @@ header input[type="text"] {
 }
 
 header nav {
-    margin: 0 10px;
+    margin: 0 5px;
 
 }
 
@@ -176,12 +173,6 @@ header p:hover {
     display: block;
 }
 
-/* Menu Icon (Hidden by Default) */
-.menu-icon {
-    display: none;
-    font-size: 24px;
-    cursor: pointer;
-}
 
 /* Navigation Links */
 .nav-links {
@@ -190,28 +181,350 @@ header p:hover {
     gap: 20px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .menu-icon {
-        display: block; /* Show Menu Icon */
+/* Responsive Design for Screens Less Than 650px */
+@media (max-width: 650px) {
+    /* Header Adjustments */
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
     }
 
+    header a {
+        font-size: 1.2rem;
+    }
+
+    header input[type="text"] {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Hide Default Navigation Links */
     .nav-links {
-        display: none; /* Hide Navigation Links */
+        display: none;
         flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 20px;
+        width: 100%;
         background-color: #fff;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        z-index: 1000;
+        padding: 10px;
+        margin-top: 10px;
     }
 
     .nav-links.active {
         display: flex; /* Show Navigation Links When Active */
     }
+
+    /* Menu Icon */
+    .menu-icon {
+        display: none; /* Show Menu Icon */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    /* Dropdown Menu */
+    .dropdown-container {
+        width: 100%;
+    }
+
+    .dropdown {
+        position: static; /* Make Dropdown Full Width */
+        width: 100%;
+        box-shadow: none;
+        border: none;
+    }
+
+    .dropdown a {
+        padding: 10px;
+    }
+
+    /* Search Bar */
+    #searchBar {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Main Content Adjustments */
+    #cont1 h1 {
+        font-size: 2rem;
+    }
+
+    #cont1 h3 {
+        font-size: 1.2rem;
+    }
+
+    #cont1 p {
+        font-size: 0.9rem;
+    }
+
+    #cont2 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #cont2 img {
+        width: 100%;
+        height: auto;
+    }
+
+    #Subjects {
+        flex-direction: column;
+    }
+
+    #Subjects div {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    #cors {
+        flex-direction: column;
+    }
+
+    #cors div {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    #contact input {
+        width: 100%;
+    }
+
+    #test {
+        flex-direction: column;
+    }
+
+    #users {
+        flex-direction: column;
+    }
+
+    #users div {
+        flex: 1 1 100%;
+        margin-bottom: 20px;
+    }
+
+    footer .icons {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    footer .end {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer .links-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
+/* Responsive Design for Screens Less Than 450px */
+@media (max-width: 450px) {
+    /* Header Adjustments */
+    header {
+        padding: 10px;
+    }
+
+    header a {
+        font-size: 1rem; /* Smaller font size for logo */
+    }
+
+    header input[type="text"] {
+        padding: 8px;
+        font-size: 14px; /* Smaller font size for search bar */
+    }
+    /* Navigation Links */
+    .nav-links {
+        top: 50px; /* Adjust position below the header */
+        right: 10px;
+        padding: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Smaller font size for navigation links */
+    }
+
+    /* Dropdown Menu */
+    .dropdown a {
+        font-size: 12px; /* Smaller font size for dropdown links */
+    }
+
+    /* Main Content Adjustments */
+    #cont1 h1 {
+        font-size: 1.5rem; /* Smaller heading */
+    }
+
+    #cont1 h3 {
+        font-size: 1rem; /* Smaller subheading */
+    }
+
+    #cont1 p {
+        font-size: 0.8rem; /* Smaller paragraph text */
+    }
+
+    #cont2 {
+        padding: 10px;
+    }
+
+    #cont2 p {
+        font-size: 0.9rem; /* Smaller text in About section */
+    }
+
+    #cont2 img {
+        width: 100%; /* Ensure images fit the screen */
+    }
+
+    /* Popular Categories Section */
+    #Subjects {
+        gap: 10px; /* Reduce gap between items */
+    }
+
+    #Subjects div {
+        padding: 10px; /* Smaller padding for category boxes */
+    }
+
+    #Subjects i {
+        font-size: 24px; /* Smaller icons */
+    }
+
+    #Subjects p {
+        font-size: 0.9rem; /* Smaller text */
+    }
+
+    /* Courses Section */
+    #cors {
+        gap: 10px; /* Reduce gap between course cards */
+    }
+
+    #cors div {
+        padding: 10px; /* Smaller padding for course cards */
+    }
+
+    #cors h3 {
+        font-size: 1rem; /* Smaller course titles */
+    }
+
+    #cors p {
+        font-size: 0.8rem; /* Smaller course descriptions */
+    }
+
+    /* Contact Section */
+    #contact {
+        padding: 10px;
+    }
+
+    #contact input {
+        padding: 8px;
+        font-size: 14px; /* Smaller input field */
+    }
+
+    #contact button {
+        padding: 8px 16px; /* Smaller button */
+        font-size: 14px;
+    }
+
+    /* Testimonials Section */
+    #test {
+        padding: 10px;
+    }
+
+    #test img {
+        width: 100%; /* Ensure images fit the screen */
+    }
+
+    #users div {
+        padding: 10px; /* Smaller padding for testimonial cards */
+    }
+
+    #users p {
+        font-size: 0.8rem; /* Smaller testimonial text */
+    }
+
+    /* Blog Section */
+    #blog {
+        padding: 10px;
+    }
+
+    #blog h1 {
+        font-size: 1.5rem; /* Smaller blog title */
+    }
+
+    #blog h2 {
+        font-size: 1.2rem; /* Smaller blog subtitle */
+    }
+
+    #blog p {
+        font-size: 0.8rem; /* Smaller blog text */
+    }
+
+    /* Footer Adjustments */
+    footer {
+        padding: 10px;
+    }
+
+    footer .icons {
+        gap: 10px; /* Reduce gap between footer items */
+    }
+
+    footer .icon-container {
+        font-size: 0.9rem; /* Smaller footer text */
+    }
+
+    footer .end input {
+        padding: 8px;
+        font-size: 14px; /* Smaller input field */
+    }
+
+    footer .end button {
+        padding: 8px 16px; /* Smaller button */
+        font-size: 14px;
+    }
+
+    footer .links-bottom {
+        gap: 10px; /* Reduce gap between footer links */
+        
+    }
+
+    footer .links-bottom h3 {
+        font-size: 1rem; /* Smaller footer headings */
+    }
+    .foot i{
+        color: #fff;
+    }
+
+    footer .links-bottom p {
+        font-size: 0.8rem; /* Smaller footer text */
+    }
+
+      /* Courses Section */
+      .col {
+        padding: 10px; /* Reduce padding for smaller screens */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .col .row h3 {
+        font-size: 1.2rem; /* Smaller font size for "Courses" heading */
+    }
+
+    .col .row h2 {
+        font-size: 1.5rem; /* Smaller font size for main heading */
+        margin-top: 5px; /* Reduce margin */
+    }
+
+    .col .p {
+        font-size: 0.9rem; /* Smaller font size for paragraph */
+        line-height: 1.4; /* Improve readability */
+        margin: 10px 0; /* Adjust margin */
+    }
+
+    .col #get {
+        padding: 8px 16px; /* Smaller button */
+        font-size: 0.9rem; /* Smaller font size for button text */
+    }
+}
+
 
 /* Make #cont1 take up the full viewport height */
 #cont1 {
@@ -705,7 +1018,7 @@ h1::after {
 
 /* Image styling within course sections */
 #cors img {
-    width: 300px;
+    width: 100%;
     height: 200px;
     border-radius: 10px;
 }
@@ -1218,7 +1531,7 @@ footer {
 }
 
 .foot {
-    flex: 1 1 300px;
+    flex: 1 1 200px;
 }
 
 .foot p {
@@ -1253,7 +1566,7 @@ footer {
 }
 
 .end {
-    flex: 1 1 300px;
+    /* flex: 1 1 300px; */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1278,7 +1591,7 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 50%;
+    width: 70%;
 }
 
 .end .get:hover {
@@ -1312,6 +1625,7 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    
     .icons {
         flex-direction: column;
         align-items: center;
@@ -1334,6 +1648,7 @@ footer {
 }
 
 @media (max-width: 480px) {
+    
     .foot p {
         font-size: 1.25rem;
     }
@@ -1356,6 +1671,7 @@ footer {
 
     .links-bottom h3 {
         font-size: 1.1rem;
+        display: flex;
     }
 
     .links-bottom p {

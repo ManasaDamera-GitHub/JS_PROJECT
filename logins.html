@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        gap: 40px;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        padding: 20px; /* Add padding for smaller screens */
+      }
+
+      /* Container Styles */
+      div {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 300px; /* Fixed width for desktop */
+        height: 350px; /* Fixed height for desktop */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      div:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Heading Styles */
+      h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* Link Styles */
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+      }
+
+      /* Image Styles */
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-top: 15px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column; /* Stack containers vertically on smaller screens */
+          gap: 20px; /* Reduce gap between containers */
+        }
+
+        div {
+          width: 100%; /* Full width on smaller screens */
+          height: auto; /* Auto height to fit content */
+          padding: 15px; /* Reduce padding for smaller screens */
+        }
+
+        h1 {
+          font-size: 20px; /* Smaller font size for smaller screens */
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 18px; /* Even smaller font size for very small screens */
+        }
+
+        img {
+          margin-top: 10px; /* Reduce margin for smaller screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Are you a student? <a href="./login.html">Click here</a></h1>
+      <img src="./stLog.jpg" alt="Student Login" />
+    </div>
+    <div>
+      <h1>Are you an Instructor? <a href="./inLog.html">Click here</a></h1>
+      <img src="./inLog.png" alt="Instructor Login" />
+    </div>
+  </body>
+</html>

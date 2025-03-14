@@ -63,14 +63,6 @@ function displayData(data) {
       div2.classList.add("course-card");
 
       let item = document.createElement("div");
-      // item.classList.add("");
-      //     item.innerHTML = `
-      //     <img src="${obj.pic}" alt="${obj.title}" >
-      //     <p><strong>${obj.title}</strong></p>
-      //     <p>${obj.description}</p>
-      //     <p>Price: ${obj.price}</p>
-      //     <p>Category: ${obj.category}</p>
-      // `;
       item.innerHTML = `
          <img src="${obj.pic}" alt="${obj.title}" >
         <p style="color:#987070"><strong>${obj.title}</strong></p>
@@ -84,7 +76,7 @@ function displayData(data) {
 
 function login() {
   alert("Redirecting to Login Page...");
-  window.location.href = "./login.html";
+  window.location.href = "./logins.html";
 }
 // Event listener for search bar
 searchBar.addEventListener("keyup", function () {
