@@ -226,40 +226,99 @@
         }
 
         /* Loading Container */
-        #loading-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 200px;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
+#loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+    background-color: transparent;
+    position: relative;
+    grid-column: 1 / -1; /* Span all columns */
+}
 
-        /* Spinner Animation */
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #987070;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
+/* Modern Spinner Animation */
+.spinner {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    border: 4.5px solid #0000;
+    border-radius: 50%;
+    border-color: #dbdcef #0000;
+    animation: spinner-e04l1k 1s infinite linear;
+    position: relative;
+}
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+.spinner::before,
+.spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+}
 
-        /* Loading Text */
-        #loading-container p {
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #555;
-        }
+.spinner::before {
+    border-color: #0D4715 #0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+}
+
+.spinner::after {
+    margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+    100% {
+        transform: rotate(1turn);
+    }
+}
+
+/* Loading Text with Typing Animation */
+#loading-container p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #0D4715;
+    font-weight: 500;
+    position: relative;
+}
+
+#loading-container p::after {
+    content: "...";
+    position: absolute;
+    animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: ".";
+    }
+    40% {
+        content: "..";
+    }
+    60%, 100% {
+        content: "...";
+    }
+}
+
+/* Pulse Animation for Container */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+
+#loading-container {
+    animation: pulse 2s ease-in-out infinite;
+}
     </style>
 </head>
 
@@ -302,7 +361,7 @@
             <!-- Loading Spinner -->
             <div id="loading-container">
                 <div class="spinner"></div>
-                <p>Loading...</p>
+                <p>Loading our expert instructors</p>
             </div>
         </div>
     </div>
