@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      :root {
+        --primary: #5a5b5d;
+        --primary-hover: #484849;
+        --correct: #4cc9f0;
+        --wrong: #f72585;
+        --background: #f8f9fa;
+        --card-bg: #ffffff;
+        --text: #333333;
+        --border: #e0e0e0;
+      }
+/* Replace your existing header styles with this */
+header {
+    background-color: #ffffff;
+    width: 100vw;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+}
+
+.header-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Keep all your other existing styles */
+.back-btn {
+    background: none;
+    border: none;
+    color: #4361ee;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #f0f4ff;
+    transform: translateX(-3px);
+}
+
+.back-btn i {
+    margin-right: 8px;
+}
+
+header h1 {
+    margin: 0 auto;
+    color: #2b2d42;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Update your HTML header structure to this: */
+<header>
+    <div class="header-container">
+        <button onclick="back()" class="back-btn">
+            <i class="fas fa-chevron-left"></i> Back
+        </button>
+        <h1>HTML Knowledge Test</h1>
+    </div>
+</header>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--background);
+        color: var(--text);
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      h1 {
+        text-align: center;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+      }
+
+      .question {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--primary);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .question:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        margin-top: 0;
+        color: var(--primary);
+        font-size: 1.3rem;
+      }
+
+      .options {
+        margin: 1rem 0;
+      }
+
+      .option {
+        margin: 0.8rem 0;
+        padding: 0.8rem;
+        border-radius: 8px;
+        background: rgba(67, 97, 238, 0.05);
+        transition: background 0.2s;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      .option:hover {
+        background: rgba(67, 97, 238, 0.1);
+      }
+
+      .option input[type="radio"] {
+        margin-right: 1rem;
+        accent-color: var(--primary);
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      /* Feedback for correct/wrong answers (JS-added classes) */
+      .option.correct {
+        background: rgba(76, 201, 240, 0.2);
+        border-left: 4px solid var(--correct);
+      }
+
+      .option.wrong {
+        background: rgba(247, 37, 133, 0.2);
+        border-left: 4px solid var(--wrong);
+      }
+
+      /* Progress bar */
+      .progress-container {
+        width: 100%;
+        background: #e0e0e0;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+      }
+
+      .progress-bar {
+        height: 10px;
+        background: var(--primary);
+        border-radius: 10px;
+        width: 0%;
+        transition: width 0.4s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+        <div>
+            <button onclick="back()" class="back-btn">
+              <i class="fas fa-chevron-left"></i> Back
+            </button>
+                    <h1>HTML Knowledge Test</h1>
+        </div>
+    </header>
+    <div class="question">
+      <h3>1.What does HTML stand for?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q1" id="q1a" />
+          <label for="q1a">Hyper Text Markup Language</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q1" id="q1b" />
+          <label for="q1b">Hyperlinks and Text Markup Language</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q1" id="q1c" />
+          <label for="q1c">Home Tool Markup Language</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q1" id="q1d" />
+          <label for="q1d">Hyper Transfer Markup Language</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 2 -->
+    <div class="question">
+      <h3>2. Which tag is used to define an unordered list?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q2" id="q2a" />
+          <label for="q2a">&lt;ol&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q2" id="q2b" />
+          <label for="q2b">&lt;li&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q2" id="q2c" />
+          <label for="q2c">&lt;ul&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q2" id="q2d" />
+          <label for="q2d">&lt;list&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 3 -->
+    <div class="question">
+      <h3>3. Which HTML element is used to display a horizontal line?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q3" id="q3a" />
+          <label for="q3a">&lt;br&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q3" id="q3b" />
+          <label for="q3b">&lt;line&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q3" id="q3c" />
+          <label for="q3c">&lt;hr&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q3" id="q3d" />
+          <label for="q3d">&lt;div&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 4 -->
+    <div class="question">
+      <h3>
+        4. Which attribute is used to provide a unique identifier for an HTML
+        element?
+      </h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q4" id="q4a" />
+          <label for="q4a">class</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q4" id="q4b" />
+          <label for="q4b">name</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q4" id="q4c" />
+          <label for="q4c">id</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q4" id="q4d" />
+          <label for="q4d">src</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 5 -->
+    <div class="question">
+      <h3>5. Which tag is used to embed an image in HTML?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q5" id="q5a" />
+          <label for="q5a">&lt;img&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q5" id="q5b" />
+          <label for="q5b">&lt;image&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q5" id="q5c" />
+          <label for="q5c">&lt;picture&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q5" id="q5d" />
+          <label for="q5d">&lt;src&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 6 -->
+    <div class="question">
+      <h3>6. What is the correct HTML for creating a hyperlink?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q6" id="q6a" />
+          <label for="q6a">&lt;a&gt;https://example.com&lt;/a&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q6" id="q6b" />
+          <label for="q6b"
+            >&lt; a url="https://example.com"&gt;Example &lt;/a &gt;
+          </label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q6" id="q6c" />
+          <label for="q6c"
+            >&lt;a href="https://example.com" &gt;Example&lt;/link&gt;</label
+          >
+        </div>
+        <div class="option">
+          <input type="radio" name="q6" id="q6d" />
+          <label for="q6d">&lt;link&gt;https://example.com &lt;/link&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 7 -->
+    <div class="question">
+      <h3>7. Which HTML5 element is used to define a navigation menu?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q7" id="q7a" />
+          <label for="q7a">&lt;menu&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q7" id="q7b" />
+          <label for="q7b">&lt;nav&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q7" id="q7c" />
+          <label for="q7c">&lt;navigation&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q7" id="q7d" />
+          <label for="q7d">&lt;links&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 8 -->
+    <div class="question">
+      <h3>8. Which tag is used to define a table row in HTML?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q8" id="q8a" />
+          <label for="q8a">&lt;td&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q8" id="q8b" />
+          <label for="q8b">&lt;tr&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q8" id="q8c" />
+          <label for="q8c">&lt;th&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q8" id="q8d" />
+          <label for="q8d">&lt;table-row&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- Question 9 -->
+    <div class="question">
+      <h3>9. Which HTML tag is used for the largest heading?</h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q9" id="q9a" />
+          <label for="q9a">&lt;h6&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q9" id="q9b" />
+          <label for="q9b">&lt;heading&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q9" id="q9c" />
+          <label for="q9c">&lt;h1&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q9" id="q9d" />
+          <label for="q9d">&lt;head&gt;</label>
+        </div>
+      </div>
+    </div>
+    <!-- question 10 -->
+    <div class="question">
+      <h3>
+        10. Which HTML element is used to define the main content of a document?
+      </h3>
+      <div class="options">
+        <div class="option">
+          <input type="radio" name="q10" id="q10a" />
+          <label for="q10a">&lt;main&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q10" id="q10b" />
+          <label for="q10b">&lt;content&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q10" id="q10c" />
+          <label for="q10c">&lt;body&gt;</label>
+        </div>
+        <div class="option">
+          <input type="radio" name="q10" id="q10d" />
+          <label for="q10d">&lt;section&gt;</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+
+    <script>
+      function checkAnswers() {
+        let score = 0;
+
+        // Correct answers (match the `name` and `id` of each question)
+        const correctAnswers = {
+          q1: "q1a", // Q1: "Hyper Text Markup Language"
+          q2: "q2c", // Q2: "<ul>"
+          q3: "q3c", // Q3: "<hr>"
+          q4: "q4c", // Q4: "id"
+          q5: "q5a", // Q5: "<img>"
+          q6: "q6c", // Q6: `<a href="...">Example</a>`
+          q7: "q7b", // Q7: "<nav>"
+          q8: "q8b", // Q8: "<tr>"
+          q9: "q9c", // Q9: "<h1>"
+          q10: "q10a", // Q10: "<main>"
+        };
+
+        // Check each question
+        for (const question in correctAnswers) {
+          const selectedOption = document.querySelector(
+            `input[name="${question}"]:checked`
+          );
+
+          if (
+            selectedOption &&
+            selectedOption.id === correctAnswers[question]
+          ) {
+            score++;
+            // Optional: Highlight correct answer (add CSS class)
+            selectedOption.parentElement.classList.add("correct");
+          } else if (selectedOption) {
+            // Optional: Highlight wrong answer
+            selectedOption.parentElement.classList.add("wrong");
+          }
+        }
+
+        alert(
+          `Your score: ${score} out of ${Object.keys(correctAnswers).length}`
+        );
+      }
+
+      function back(){
+        window.location.href="./html.html";
+      }
+    </script>
+  </body>
+</html>

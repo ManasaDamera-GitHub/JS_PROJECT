@@ -17,8 +17,11 @@
 <body>
     <header>
         <p style="font-size: 1.2rem; color: #2c3e50; font-family: 'Georgia', serif;font-weight: 600;"><i class="fas fa-graduation-cap" style="font-size: 48px; color: #2c3e50;"></i>NexGen Institute</p>
-        <input type="text" id="searchBar" placeholder="Search by Course name...">
-        <ul id="result"></ul>
+        <div id="headSearch"> 
+            <i class="fas fa-search fa-lg" style="font-size: 14px; color: #636363;"></i>
+            <input type="text" id="search" placeholder="Search by Course name...">
+        </div>
+        <!-- <ul id="result"></ul> -->
         <nav class="navbar">
             <a href="./html.html">HTML</a>
             <a href="./css.html">CSS</a>
@@ -43,10 +46,12 @@
     <div class="home">
         <h1>Hello, What Do You Want To Learn?</h1>
         <div class="search-container">
-            <button id="textButton" class="typewriter-button" ></button>
+            <!-- <button id="textButton" class="typewriter-button" ></button> -->
+            <input type="text" id="searchBar" placeholder="Search by Course name...">
+            <ul id="result"></ul>
             <i class="fas fa-search fa-lg" style="font-size: 24px; color: #636363;"></i>
+            <!-- <div id="homeSearchResults" class="search-results"></div> -->
         </div>
-
     </div>
 
     <div id="loader" class="loader"></div> <!-- Loader added here -->
