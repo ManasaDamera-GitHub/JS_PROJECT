@@ -142,7 +142,6 @@ search.addEventListener("keyup", function () {
   displayData(filteredData);
 });
 
-
 // Theme toggle functionality
 const toggleButton = document.getElementById("theme-toggle");
 const currentTheme = localStorage.getItem("theme");
