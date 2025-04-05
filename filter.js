@@ -67,6 +67,10 @@ function displayData(data) {
   }
 }
 
+document.getElementById("menu-toggle").addEventListener("click", function () {
+  document.getElementById("menu").classList.toggle("show");
+});
+
 // Function to add a course to the cart
 function addToCart(course) {
   const confirmAdd = confirm(`Add "${course.title}" to cart?`);

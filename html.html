@@ -14,6 +14,60 @@
         /* Import Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&family=Open+Sans:wght@400;600&display=swap');
 
+           /* footer styling */
+      footer {
+        /* background-color: #f5f7f9; */
+        background: linear-gradient(135deg, #ecf0f3, #dfe6e9);
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      /* Button styling */
+      footer button {
+        background-color: #7a8e9b;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Button hover effect */
+      footer button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Button active state */
+      footer button:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive design */
+      @media (max-width: 600px) {
+        footer {
+          flex-direction: column;
+          gap: 0.8rem;
+          padding: 1rem;
+        }
+
+        footer button {
+          width: 100%;
+        }
+      }
         /* Global Styles */
         body {
             font-family: 'Open Sans', sans-serif;
@@ -127,7 +181,7 @@
         }
 
         /* Additional Spacing and Alignment */
-        header {
+        footer {
             text-align: center;
             margin-bottom: 30px;
         }
@@ -135,11 +189,7 @@
 </head>
 
 <body>
-    <header>
-        <button onclick="Quiz()">Quiz</button>
-        <button onclick="access()">Assignments</button>
-        <button onclick="access()">Assessment</button>
-    </header>
+    
     <h1>Introduction to HTML</h1>
     <p>
         HTML (HyperText Markup Language) is the standard markup language used to create and structure content on the
@@ -169,11 +219,15 @@
         and
         other tools that enhance websites, making them more interactive and visually appealing.
     </p>
+    <footer>
+        <button onclick="Quiz()" >Quiz</button>
+        <button onclick="access()" id="">Assignments</button>
+        <button onclick="access()">Assessment</button>
+    </footer>
     <div class="course-container">
         <p>"Your journey to expertise starts here. Secure your spot in this course now!"</p>
         <button class="buy-btn" onclick="course()">BUY NOW</button>
     </div>
-
     <script>
         function course() {
             let confirmPurchase = confirm("Are you sure you want to buy this course?");
@@ -188,14 +242,14 @@
         function access() {
             let confirmAccess = confirm("Are you sure");
             if (confirmAccess) {
-                window.location.href = "./filter.html";
+                window.location.href = "";
             } else {
                 alert("Please BUY the course to access the content")
             }
 
         }
         function Quiz(){
-            window.location.href="./Quiz.html"
+            window.location.href="./Quiz1.html"
         }
     </script>
 
