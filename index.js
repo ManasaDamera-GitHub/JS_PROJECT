@@ -92,9 +92,9 @@ searchBar.addEventListener("keyup", function () {
   displayData(filteredData);
 });
 
-document.getElementById("menu-toggle").addEventListener("click", function () {
-  document.getElementById("menu").classList.toggle("show");
-});
+// document.getElementById("menu-toggle").addEventListener("click", function () {
+//   document.getElementById("menu").classList.toggle("show");
+// });
 
 // Select all elements with class "get"
 document.querySelectorAll(".get").forEach((get) =>
