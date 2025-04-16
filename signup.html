@@ -140,7 +140,7 @@
 
     <!-- Toast container is positioned outside the form-container -->
     <div class="toast-container" id="toast-container"></div>
-    <script>
+    <!-- <script>
         let input1 = document.getElementById("full name");
         let input2 = document.getElementById("password");
         let input3 = document.getElementById("email");
@@ -199,7 +199,7 @@
             const password = document.getElementById("password").value.trim();
 
             const app = initializeApp(firebaseConfig);
-            const auth = getAuth();
+            const auth = getAuth(app);
 
             createUserWithEmailAndPassword(auth, email, password)
                 .then(() => {
@@ -235,7 +235,91 @@
 
 
 
-    </script>
+    </script> -->
+    
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-auth.js";
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyDe-jddPPJtjpbBIbh54QZX1MtFCTZLCNk",
+          authDomain: "e-learning-40bef.firebaseapp.com",
+          projectId: "e-learning-40bef",
+          storageBucket: "e-learning-40bef.appspot.com",
+          messagingSenderId: "528648423814",
+          appId: "1:528648423814:web:e200eeb3ca828e69190407"
+        };
+      
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+      
+        document.getElementById("signup").addEventListener("submit", async (event) => {
+          event.preventDefault();
+      
+          const fullName = document.getElementById("full name");
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("password");
+          const nameError = document.getElementById("nameError");
+          const emailError = document.getElementById("emailError");
+          const passError = document.getElementById("passError");
+      
+          let isValid = true;
+          nameError.innerHTML = "";
+          emailError.innerHTML = "";
+          passError.innerHTML = "";
+          fullName.classList.remove("error");
+          emailInput.classList.remove("error");
+          passwordInput.classList.remove("error");
+      
+          if (!fullName.value.trim()) {
+            nameError.innerHTML = '<i style="color: red">Username required</i>';
+            fullName.classList.add("error");
+            isValid = false;
+          }
+      
+          if (!emailInput.value.trim()) {
+            emailError.innerHTML = '<i style="color: red">Email required</i>';
+            emailInput.classList.add("error");
+            isValid = false;
+          }
+      
+          if (!passwordInput.value.trim()) {
+            passError.innerHTML = '<i style="color: red">Password required</i>';
+            passwordInput.classList.add("error");
+            isValid = false;
+          }
+      
+          if (!isValid) return;
+      
+          try {
+            await createUserWithEmailAndPassword(auth, emailInput.value.trim(), passwordInput.value.trim());
+            showToast('success', 'Registration Successful');
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1500);
+          } catch (error) {
+            console.error(error.code, error.message);
+            if (error.code === "auth/email-already-in-use") {
+              showToast("failure", "User already exists");
+            } else {
+              showToast("failure", error.message);
+            }
+          }
+        });
+      
+        function showToast(type, message) {
+          const toast = document.createElement('div');
+          toast.className = `toast ${type}`;
+          toast.textContent = message;
+      
+          const container = document.getElementById('toast-container');
+          container.appendChild(toast);
+      
+          setTimeout(() => toast.remove(), 3000);
+        }
+      </script>
+      
 </body>
 
 </html>
