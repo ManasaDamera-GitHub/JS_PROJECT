@@ -1,0 +1,230 @@
+{
+    "courses": [
+      {
+        "id": "5",
+        "title": "Modern JavaScript (ES6+) From The Beginning",
+        "pic": "https://coniolabs.com/wp-content/uploads/2023/03/es6.png",
+        "category": "Programming",
+        "price": "$35.99",
+        "description": "Master modern JavaScript (ES6+) features, including arrow functions, async/await, and modules.",
+        "duration": "2 hours",
+        "link":"https://youtu.be/NCwa_xi0Uuc?si=93SsITFzC7MoL_Gi"
+      },
+      {
+        "id": "8",
+        "title": "Web Development Bootcamp",
+        "pic": "https://www.appstudio.ca/blog/wp-content/uploads/2020/01/Web-Development-and-Its-Principles.png",
+        "category": "Web Development",
+        "price": "$69.99",
+        "description": "Build modern websites with HTML, CSS, JavaScript, and React.",
+        "duration": "25 hours",
+        "link":"https://youtu.be/zJSY8tbf_ys?si=OVs0M_aX1buEnkHr"
+      },
+      {
+        "id": "9",
+        "title": "Java Programming for Beginners",
+        "pic": "https://i.ytimg.com/vi/2L4ZhpNYgO4/maxresdefault.jpg",
+        "category": "Programming",
+        "price": "$25.9",
+        "description": "Learn Java from scratch with hands-on coding exercises and build real-world applications.",
+        "duration": "12 hours",
+        "link":"https://youtu.be/r59xYe3Vyks?si=QRWTcV_KAzpE3CyH"
+      },
+      {
+        "id": "10",
+        "title": "Object-Oriented Programming with Java",
+        "category": "Programming",
+        "pic": "https://cdn.educba.com/academy/wp-content/uploads/2019/02/Object-Oriented-Programming-in-Java-768x427.jpg",
+        "coupon": "https://www.udemy.com/course/object-oriented-programming-java/?couponCode=OOPJAVA30",
+        "price": "$49.99",
+        "description": "Master object-oriented programming (OOP) concepts with Java and build scalable applications.",
+        "language": "English",
+        "rating": 4.8,
+        "duration": "15 hours"
+      },
+      {
+        "id": "11",
+        "title": "Java Data Structures & Algorithms",
+        "category": "Computer Science",
+        "pic": "https://perfectelearning.com/uploads/blogs/1701240611.jpg",
+        "coupon": "https://www.udemy.com/course/java-data-structures-algorithms/?couponCode=DSAJAVA40",
+        "price": "$59.99",
+        "description": "Learn essential data structures and algorithms in Java to ace coding interviews.",
+        "language": "English",
+        "rating": 4.9,
+        "duration": "20 hours",
+        "link":"https://youtu.be/kE_HweAyfyw?si=sRSywhCVnQC3_mfv"
+      },
+      {
+        "id": "12",
+        "title": "Spring Boot & Microservices with Java",
+        "category": "Web Development",
+        "pic": "https://miro.medium.com/v2/resize:fit:1358/1*zWjovaW-r-_Zjk6LEdjmSQ.png",
+        "coupon": "https://www.udemy.com/course/spring-boot-microservices-java/?couponCode=SPRINGJAVA50",
+        "price": "$69.99",
+        "description": "Build scalable microservices using Java, Spring Boot, and RESTful APIs.",
+        "language": "English",
+        "rating": 4.8,
+        "duration": "25 hours"
+      },
+      {
+        "id": "13",
+        "title": "Build ML Projects on AWS Master SageMaker",
+        "category": "Data Science",
+        "pic": "https://img-c.udemycdn.com/course/750x422/5605600_4158_6.jpg",
+        "coupon": "https://www.udemy.com/course/mastering-aws-sage-maker-from-fundamentals-to-advance/?couponCode=FESTIVALYEAR",
+        "price": "$9.99",
+        "description": "Unlock the full potential of AWS SageMaker and become a machine learning expert.",
+        "language": "English",
+        "rating": 4.2,
+        "duration": "12 hours",
+        "link":"https://youtu.be/pidVLkQQom8?si=sI76xoA-Avj87e8d"
+      },
+      {
+        "id": "14",
+        "title": "Python & Django REST API Bootcamp – Build A Python Web API",
+        "category": "Development",
+        "pic": "https://i.ytimg.com/vi/-LVXBuYzi00/maxresdefault.jpg",
+        "coupon": "https://www.udemy.com/course/the-complete-python-django-rest-api-development-bootcamp/?couponCode=EE34AA06610150B2950B",
+        "price": "$84.99",
+        "description": "Do you want to build a complete Python RESTful API that is not only secure and stable but also deployed to a production-ready environment? If Yes! Then this is the course for you!",
+        "language": "English",
+        "rating": 4.6,
+        "duration": "15 hours",
+        "link":""
+      },
+      {
+        "id": "15",
+        "title": "[NEW] Python PCAP-31-03 Certification – Tests & Insights",
+        "category": "IT & Software",
+        "pic": "https://img-c.udemycdn.com/course/480x270/6280705_b1ff_3.jpg",
+        "coupon": "https://www.udemy.com/course/python-pcap-31-03-certification-practice-exam-preparation/?couponCode=AA12B1022FAFC980FE2D",
+        "price": "$19.99",
+        "description": "Prepare for your Python Certification PCAP-31-03 (2024) with 6 Practice Tests - Detailed Explanations.",
+        "language": "English",
+        "rating": 4.8,
+        "duration": "8 hours",
+        "link":"https://youtu.be/c708Nf0cHrs?si=3aHwSkqYChmXyKbA"
+      },
+      {
+        "id": "16",
+        "title": "PYTHON INTERVIEW PREPARATION",
+        "category": "IT & Software",
+        "pic": "https://img-c.udemycdn.com/course/480x270/6060673_b355.jpg",
+        "coupon": "https://www.udemy.com/course/python-interview-prep/?couponCode=7ECA8DA5B25ED958EE32",
+        "price": "$799.00",
+        "description": "Prepare for Python Interviews With A Wide Variety Of In-Depth Practice Questions.",
+        "language": "English",
+        "rating": 4.7,
+        "duration": "2 hours",
+        "link":"https://youtu.be/jlf12uVQcfE?si=Zw2hg4vVLKLXZRN1"
+      },
+      {
+        "id": "17",
+        "title": "Mastering Influencer Marketing: Strategies for Success",
+        "category": "Marketing",
+        "pic": "https://img-c.udemycdn.com/course/750x422/6414649_acc5_2.jpg",
+        "coupon": "https://www.udemy.com/course/mastering-influencer-marketing-strategies-for-success-m/?couponCode=312EC76246D510353A15",
+        "price": "$9.99",
+        "description": "In the rapidly evolving digital landscape, influencer marketing has become a powerful tool for brands looking to connect with their audience authentically and effectively.",
+        "language": "English",
+        "rating": 3.8,
+        "duration": "15 mins",
+        "link":"https://youtu.be/yLNSQyExhTU?si=vzyCuvIy54BI_xF2"
+      },
+      {
+        "id": "18",
+        "title": "PHP Laravel 2024: Build Amazing Restaurant Management System",
+        "category": "Development",
+        "pic": "https://img-c.udemycdn.com/course/750x422/5436836_736b_3.jpg",
+        "coupon": "https://www.udemy.com/course/php-laravel-2023-build-amazing-restaurant-management-system/?couponCode=LARAVELRESTAURANT56",
+        "price": "$9.99",
+        "description": "Learn PHP Laravel and build a complete restaurant management system from scratch.",
+        "language": "English",
+        "rating": 4.5,
+        "duration": "4 hours",
+        "link":"https://youtu.be/91azC_-aGXE?si=7KeL8E9PkG3O_J4w"
+      },
+      {
+        "id": "19",
+        "title": "Build ML Projects on AWS Master SageMaker",
+        "category": "Data Science",
+        "pic": "https://img-c.udemycdn.com/course/750x422/5605600_4158_6.jpg",
+        "coupon": "https://www.udemy.com/course/mastering-aws-sage-maker-from-fundamentals-to-advance/?couponCode=FESTIVALYEAR",
+        "price": "$9.99",
+        "description": "Unlock the full potential of AWS SageMaker and become a machine learning expert.",
+        "language": "English",
+        "rating": 4.2,
+        "duration": 6
+      },
+      {
+        "id": "20",
+        "title": "English Fluency Masterclass",
+        "pic": "https://www.fita.in/wp-content/themes/zeft/images/english-fluency.jpg",
+        "category": "Language Learning",
+        "price": "$49.99",
+        "description": "Improve your English speaking skills with real-life conversations and exercises.",
+        "duration": "10 hours",
+        "link":"https://youtu.be/IzXnziGZHww?si=6HwusvSh04Cbfij7"
+      },
+      {
+        "id": "21",
+        "title": "Python for Beginners",
+        "pic": "https://i.ytimg.com/vi/EZ55hO7QXjY/maxresdefault.jpg",
+        "category": "Programming",
+        "price": "$39.99",
+        "description": "Learn Python from scratch with hands-on coding exercises.",
+        "duration": "15 hours"
+      },
+      {
+        "id": "22",
+        "title": "Digital Marketing Essentials",
+        "pic": "https://tse4.mm.bing.net/th?id=OIP.Full9Ev729-ow_OE0djejAHaE8&pid=Api&P=0&h=180",
+        "category": "Marketing",
+        "price": "$59.99",
+        "description": "Master SEO, social media, and content marketing strategies.",
+        "duration": "12 hours",
+        "link":"https://youtu.be/EyEqWFvLDT8?si=Q5Y90_eZUGmIyNDk"
+      },
+      {
+        "id": "23",
+        "title": "Graphic Design Fundamentals",
+        "pic": "https://i.ytimg.com/vi/Ruoq5HXTnkA/maxresdefault.jpg",
+        "category": "Design",
+        "price": "$45.99",
+        "description": "Learn Adobe Photoshop, Illustrator, and essential design principles.",
+        "duration": "1 hours",
+        "link":"https://youtu.be/GQS7wPujL2k?si=AXZlM3W9lLIH9gpV"
+      },
+      {
+        "id": "24",
+        "title": "Data Science with Python",
+        "pic": "https://i.ytimg.com/vi/yh2pLdDb87c/maxresdefault.jpg",
+        "category": "Data Science",
+        "price": "$79.99",
+        "description": "Master data analysis, visualization, and machine learning with Python.",
+        "duration": "20 hours",
+        "link":"https://youtu.be/-6RqxhNO2yY?si=bUXmPQzHWEVIv5aL"
+      },
+      {
+        "id": "7bu-wWH",
+        "title": "Web Development Bootcamp",
+        "pic": "https://www.springboard.com/blog/wp-content/uploads/2023/05/best-full-stack-developer-bootcamps.jpeg",
+        "category": " Programming",
+        "price": "$5.99",
+        "description": "Learn full-stack web development with HTML, CSS, JavaScript, and Node.js.",
+        "duration": "12 weeks",
+        "link":"https://youtu.be/7u5F4TPcipk?si=wwkwfKO--Tal0j7Q"
+      },
+      {
+        "id": "nAHLREF",
+        "title": "Damera Manasa",
+        "pic": "https://coniolabs.com/wp-content/uploads/2023/03/es6.png",
+        "category": "Programming",
+        "price": "$49.99",
+        "description": "Master modern JavaScript (ES6+) features, including arrow functions, async/await, and modules.",
+        "duration": "15 hours",
+        
+      }
+    ]
+  }
