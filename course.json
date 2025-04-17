@@ -223,7 +223,7 @@
         "category": "Programming",
         "price": "$49.99",
         "description": "Master modern JavaScript (ES6+) features, including arrow functions, async/await, and modules.",
-        "duration": "15 hours",
+        "duration": "15 hours"
         
       }
     ]

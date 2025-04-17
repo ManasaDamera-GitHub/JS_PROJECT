@@ -12,9 +12,11 @@ body {
     font-family: 'Georgia', serif;
 }
 
+
 .container {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 5rem  auto;
+    margin-bottom: 1rem;
     background-color: #fff;
     padding: 20px;
     border-radius: 12px;
@@ -222,3 +224,238 @@ button:active {
         width: 100%; /* Full-width buttons on mobile */
     }
 }
+/* Header Styles */
+.page-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.page-header h1 {
+    font-size: 1.5rem;
+    color: #61605d;
+    margin-left: 12rem ;
+    font-weight: 600;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    color: #61605d;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.back-button svg {
+    fill: #61605d;
+    width: 20px;
+    height: 20px;
+}
+
+.back-button:hover {
+    background-color: #f0f7fd;
+}
+
+.header-spacer {
+    width: 68px; /* Matches back button width for balance */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .page-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 0.8rem 1rem;
+    }
+    
+    .header-title {
+        gap: 8px;
+    }
+    
+    .header-icon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .page-header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .back-button {
+        font-size: 0.9rem;
+        padding: 6px 8px;
+    }
+    
+    .back-button svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header {
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .page-header h1 {
+        font-size: 1.1rem;
+    }
+    
+    .back-button span {
+        display: none; /* Hide "Back" text on smallest screens */
+    }
+    
+    .back-button {
+        padding: 6px;
+    }
+    
+    .header-spacer {
+        width: 38px;
+    }
+}
+
+/* From Uiverse.io by alexruix */ 
+.loader {
+    width: 80px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .loader-text {
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    color: rgb(103, 103, 104);
+    animation: text_713 3.5s ease both infinite;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+  
+  .load {
+    background-color: #61605d;
+    border-radius: 50px;
+    display: block;
+    height: 16px;
+    width: 16px;
+    bottom: 0;
+    position: absolute;
+    transform: translateX(64px);
+    animation: loading_713 3.5s ease both infinite;
+  }
+  
+  .load::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: #b0afae;
+    border-radius: inherit;
+    animation: loading2_713 3.5s ease both infinite;
+  }
+  
+  @keyframes text_713 {
+    0% {
+      letter-spacing: 1px;
+      transform: translateX(0px);
+    }
+  
+    40% {
+      letter-spacing: 2px;
+      transform: translateX(26px);
+    }
+  
+    80% {
+      letter-spacing: 1px;
+      transform: translateX(32px);
+    }
+  
+    90% {
+      letter-spacing: 2px;
+      transform: translateX(0px);
+    }
+  
+    100% {
+      letter-spacing: 1px;
+      transform: translateX(0px);
+    }
+  }
+  
+  @keyframes loading_713 {
+    0% {
+      width: 16px;
+      transform: translateX(0px);
+    }
+  
+    40% {
+      width: 100%;
+      transform: translateX(0px);
+    }
+  
+    80% {
+      width: 16px;
+      transform: translateX(64px);
+    }
+  
+    90% {
+      width: 100%;
+      transform: translateX(0px);
+    }
+  
+    100% {
+      width: 16px;
+      transform: translateX(0px);
+    }
+  }
+  
+  @keyframes loading2_713 {
+    0% {
+      transform: translateX(0px);
+      width: 16px;
+    }
+  
+    40% {
+      transform: translateX(0%);
+      width: 80%;
+    }
+  
+    80% {
+      width: 100%;
+      transform: translateX(0px);
+    }
+  
+    90% {
+      width: 80%;
+      transform: translateX(15px);
+    }
+  
+    100% {
+      transform: translateX(0px);
+      width: 16px;
+    }
+  }
+   
+   
+  
+  

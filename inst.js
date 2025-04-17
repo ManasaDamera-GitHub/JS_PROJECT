@@ -1,9 +1,23 @@
+const loadingContainer = document.getElementById("loading-container");
+
 async function fetchData() {
-  let response = await fetch(
-    "https://large-necessary-quesadilla.glitch.me/courses"
-  );
-  let data = await response.json();
-  displayData(data);
+  try {
+    let response = await fetch(
+      "https://large-necessary-quesadilla.glitch.me/courses"
+    );
+    if (response.ok) {
+      let data = await response.json();
+      displayData(data);
+      console.log(data);
+    }
+  } catch (error) {
+    console.error(error);
+    loadingContainer.innerHTML =
+      "<p>Failed to load content. Please try again later.</p>";
+  } finally {
+    // Hide the loading spinner
+    loadingContainer.style.display = "none";
+  }
 }
 
 // Function to display the data
@@ -145,3 +159,7 @@ function clearInputFields() {
 }
 
 document.addEventListener("DOMContentLoaded", fetchData);
+
+function logOut() {
+  window.location.href = "./inLog.html";
+}

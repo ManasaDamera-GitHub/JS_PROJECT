@@ -1,155 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Instructor Login Page</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      /* Base Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f7fa;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+        color: #987070;
+      }
 
-        /* Login Container */
+      /* Login Container */
+      .login-container {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      /* Heading */
+      .login-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      /* Input Fields */
+      .login-container input[type="email"],
+      .login-container input[type="password"] {
+        width: 90%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      .login-container input[type="email"]:focus,
+      .login-container input[type="password"]:focus {
+        border-color: #987070;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      /* Submit Button */
+      .login-container input[type="submit"] {
+        width: 95%;
+        padding: 12px;
+        background-color: #2c3e50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .login-container input[type="submit"]:hover {
+        background-color: #2c3e50;
+      }
+
+      /* Error Message */
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+      /* Link Styles */
+      .login-container a {
+        color: #987070;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .login-container a:hover {
+        text-decoration: underline;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 480px) {
         .login-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+          padding: 20px;
+          /* margin: auto 10px; */
         }
 
-        /* Heading */
         .login-container h2 {
-            margin-bottom: 20px;
-            color: #333;
+          font-size: 24px;
         }
 
-        /* Input Fields */
         .login-container input[type="email"],
-        .login-container input[type="password"] {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            outline: none;
-        }
-
-        .login-container input[type="email"]:focus,
-        .login-container input[type="password"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        /* Submit Button */
+        .login-container input[type="password"],
         .login-container input[type="submit"] {
-            width: 95%;
-            padding: 12px;
-            background-color: #61605d;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+          padding: 10px;
+          font-size: 14px;
+          width: 90%;
+        }
+      }
+
+      /* Login Container */
+      .login-container {
+        background-color: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .login-container h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 1.8rem;
+      }
+
+      /* Form Elements */
+      #loginForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      #loginForm input {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border 0.3s;
+      }
+
+      #loginForm input:focus {
+        outline: none;
+        border-color: #987070;
+      }
+
+      #loginForm input[type="submit"] {
+        background-color: #2c3e50;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        padding: 14px;
+        transition: background-color 0.3s;
+      }
+
+      #loginForm input[type="submit"]:hover {
+        background-color: #6b4848;
+      }
+
+      /* Links */
+      #loginForm a {
+        color: #2c3e50;
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 600;
+      }
+
+      #loginForm a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      /* Error Message */
+      .error {
+        color: #e74c3c;
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 0.5rem 0;
+      }
+
+      /* Image Styles */
+      .instructor-img {
+        max-width: 500px;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        body {
+          justify-content: center;
         }
 
-        .login-container input[type="submit"]:hover {
-            background-color: #0056b3;
+        .instructor-img {
+          /* max-width: 400px;
+        order: -1; Moves image above the form */
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .login-container {
+          padding: 2rem;
         }
 
-        /* Error Message */
-        .error {
-            color: red;
-            font-size: 14px;
-            margin-top: 10px;
+        .instructor-img {
+          max-width: 350px;
         }
+      }
 
-        /* Link Styles */
-        .login-container a {
-            color: #007bff;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
+      @media (max-width: 480px) {
             .login-container {
-                padding: 20px;
-                margin: auto 10px;
-            }
-
-            .login-container h2 {
-                font-size: 24px;
-            }
-
-            .login-container input[type="email"],
-            .login-container input[type="password"],
-            .login-container input[type="submit"] {
-                padding: 10px;
-                font-size: 14px;
-                width: 90%;
-            }
-
+          /* padding: 1.5rem; */
+          margin: 1rem;
         }
+
+        .login-container h2 {
+          font-size: 1.5rem;
+        }
+
+        #loginForm input {
+          padding: 10px 12px;
+        }
+      }p{
+        margin: 0px;
+        font-weight: bold;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="login-container">
-        <h2>Instructor Login</h2>
-        <form id="loginForm">
-            <!-- Email Field -->
-            <input type="email" id="email" placeholder="Email" required>
-            <!-- Password Field -->
-            <input type="password" id="password" placeholder="Password" required>
-            <!-- Submit Button -->
-            <input type="submit" value="Login">
-            <!-- Error Message -->
-            <p id="errorMessage" class="error"></p>
-            <!-- Forgot Password Link -->
-            <p><a href="#">Forgot Password?</a></p>
-            <!-- Signup Link -->
-            <p>Don't have an account? <a href="./signup.html">Sign up</a></p>
-        </form>
+      <h2>Instructor Login</h2>
+      <form id="loginForm">
+        <!-- Email Field -->
+        <input type="email" id="email" placeholder="Email" required />
+        <!-- Password Field -->
+        <input type="password" id="password" placeholder="Password" required />
+        <!-- Submit Button -->
+        <input type="submit" value="Login" />
+        <!-- Error Message -->
+        <p id="errorMessage" class="error"></p>
+        <!-- Forgot Password Link -->
+        <!-- <p><a href="#">Forgot Password?</a></p> -->
+        <!-- Signup Link -->
+        <p>Don't have an account? <a href="./signup.html">Sign up</a></p>
+        <a href="./instructor.html"><i>Skip Login</i></a>
+      </form>
+    </div>
+    <div>
+      <img src="./inLog1.png" alt="instructor_Img" class="instructor-img" />
     </div>
 
     <script>
-        // Hardcoded Credentials
-        const correctEmail = "instructor@gmail.com";
-        const correctPassword = "instructor@123";
+      // Hardcoded Credentials
+      const correctEmail = "instructor@gmail.com";
+      const correctPassword = "instructor@123";
 
-        // Login Form Submission
-        document.getElementById("loginForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form submission
+      // Login Form Submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
 
-            // Get input values
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
+          // Get input values
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
 
-            // Validate credentials
-            if (email === correctEmail && password === correctPassword) {
-                // Redirect to instructor.html on successful login
-                window.location.href = "./instructor.html";
-            } else {
-                // Display error message
-                document.getElementById("errorMessage").textContent = "Invalid email or password.";
-            }
+          // Validate credentials
+          if (email === correctEmail && password === correctPassword) {
+            // Redirect to instructor.html on successful login
+            window.location.href = "./instructor.html";
+          } else {
+            // Display error message
+            document.getElementById("errorMessage").textContent =
+              "Invalid email or password.";
+          }
         });
     </script>
-</body>
+  </body>
 </html>
