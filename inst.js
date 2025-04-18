@@ -162,7 +162,6 @@ function logOut() {
   window.location.href = "./inLog.html";
 }
 
-
 // function add(){
 
 // }
