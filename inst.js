@@ -2,9 +2,7 @@ const loadingContainer = document.getElementById("loading-container");
 
 async function fetchData() {
   try {
-    let response = await fetch(
-      "https://large-necessary-quesadilla.glitch.me/courses"
-    );
+    let response = await fetch("https://abundant-rural-danger.glitch.me/Free");
     if (response.ok) {
       let data = await response.json();
       displayData(data);
@@ -54,7 +52,7 @@ function displayData(data) {
 // Function to delete the data
 async function deleteData(id) {
   let response = await fetch(
-    `https://large-necessary-quesadilla.glitch.me/courses/${id}`,
+    `https://abundant-rural-danger.glitch.me/Free/${id}`,
     { method: "DELETE" }
   );
   try {
@@ -82,7 +80,7 @@ async function editData(id) {
   let description = document.getElementById("desc");
   let duration = document.getElementById("dur");
   let response = await fetch(
-    `https://large-necessary-quesadilla.glitch.me/courses/${id}`
+    `https://abundant-rural-danger.glitch.me/Free/${id}`
   );
   try {
     if (!response.ok) {
@@ -125,8 +123,8 @@ async function saveData() {
 
   let courseMethod = idd ? "PUT" : "POST";
   let URL = idd
-    ? `https://large-necessary-quesadilla.glitch.me/courses/${idd}`
-    : `https://large-necessary-quesadilla.glitch.me/courses`;
+    ? `https://abundant-rural-danger.glitch.me/Free/${idd}`
+    : `https://abundant-rural-danger.glitch.me/Free`;
 
   let response = await fetch(URL, {
     method: courseMethod,
