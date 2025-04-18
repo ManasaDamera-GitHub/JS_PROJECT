@@ -161,3 +161,8 @@ document.addEventListener("DOMContentLoaded", fetchData);
 function logOut() {
   window.location.href = "./inLog.html";
 }
+
+
+// function add(){
+
+// }
