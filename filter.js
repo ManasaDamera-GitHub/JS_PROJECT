@@ -458,7 +458,7 @@ function showCourseDetails(course) {
     <p><strong>Description:</strong> ${
       course.desc_text || course.description
     }</p>
-    <p><strong>Price:</strong> ₹${course.price || "Free"}</p>
+    <p><strong>Price:</strong> ${course.price || "Free"}</p>
     <a href="${
       course.coupon || "Coupon not available"
     }"><strong>Coupon:</strong>Click me!! </a>
