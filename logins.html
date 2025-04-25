@@ -18,15 +18,19 @@
         gap: 40px;
         flex-wrap: wrap; /* Allow wrapping on smaller screens */
         padding: 20px; /* Add padding for smaller screens */
+        background-image: url("/loginBg.png");
+        background-size: cover; /* Ensures the image covers the whole background */
+        background-position: center;
+        overflow: hidden;
       }
 
       /* Container Styles */
       div {
         text-align: center;
-        background-color: #fff;
+        background-color: transparent;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(250, 249, 249, 0.7);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         width: 300px; /* Fixed width for desktop */
         height: 350px; /* Fixed height for desktop */
@@ -34,7 +38,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
       }
 
       div:hover {
@@ -45,7 +48,7 @@
       /* Heading Styles */
       h1 {
         font-size: 24px;
-        color: #333;
+        color: #fff;
         margin-bottom: 20px;
       }
 
@@ -101,7 +104,10 @@
   </head>
   <body>
     <div>
-      <h1>Are you a student? <a href="./login.html">Click here</a></h1>
+      <h1>
+        Are you a student?<br />
+        <a href="./login.html">Click here</a>
+      </h1>
       <img src="./stLog.jpg" alt="Student Login" />
     </div>
     <div>

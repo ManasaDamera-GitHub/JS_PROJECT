@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div>
                     <h3>${course.title}</h3>
                     <p>${course.description}</p>
-                    <p class="price">Price: $${course.price}</p>
+                    <p class="price">Price: ${course.price}</p>
                     <button class="btn remove-btn" data-index="${index}">Remove</button>
                 </div>
             `;

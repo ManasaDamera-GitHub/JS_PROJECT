@@ -257,7 +257,6 @@ function displayData(data) {
       item.innerHTML = `
                 <img src="${obj.pic}" alt="${obj.title}">
                 <a href="${obj.link}"><p><strong>${obj.title}</strong></p><i>Ready to learn? Start the course now</i></a>
-                <p>${obj.description}</p>
                 <p>Price: ${obj.price}</p>
                 <p>Category: ${obj.category}</p>
                 <button class="btn buy-btn">Buy</button>

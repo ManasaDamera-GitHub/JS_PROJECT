@@ -75,7 +75,6 @@ function displayData(data) {
 }
 
 function login() {
-  alert("Redirecting to Login Page...");
   window.location.href = "./logins.html";
 }
 // Event listener for search bar
