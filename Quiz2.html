@@ -13,8 +13,8 @@
       :root {
         --primary: #5a5b5d;
         --primary-hover: #484849;
-        --correct: #4cc9f0;
-        --wrong: #f72585;
+        --correct: #09a02f;
+        --wrong: #f72525;
         --background: #f8f9fa;
         --card-bg: #ffffff;
         --text: #333333;
@@ -35,15 +35,12 @@
       }
 
       .header-container {
-        /* max-width: 700px; */
         margin: 0 auto;
         padding: 0 2rem;
         display: flex;
         justify-content: space-between;
-        /* position: relative; */
       }
 
-      /* Keep all your other existing styles */
       .back-btn {
         background: none;
         border: none;
@@ -53,7 +50,7 @@
         padding: 0.5rem 1rem;
         border-radius: 6px;
         transition: all 0.3s ease;
-       width: 100px;
+        width: 100px;
       }
 
       .back-btn:hover {
@@ -126,6 +123,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        position: relative;
       }
 
       .option:hover {
@@ -163,7 +161,7 @@
         transform: translateY(0);
       }
 
-      /* Feedback for correct/wrong answers (JS-added classes) */
+      /* Feedback for correct/wrong answers */
       .option.correct {
         background: rgba(76, 201, 240, 0.2);
         border-left: 4px solid var(--correct);
@@ -174,20 +172,71 @@
         border-left: 4px solid var(--wrong);
       }
 
-      /* Progress bar */
-      .progress-container {
-        width: 100%;
-        background: #e0e0e0;
-        border-radius: 10px;
-        margin-bottom: 2rem;
+      /* Feedback indicator */
+      .feedback {
+        margin-left: auto;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: none;
+      }
+      
+      .correct .feedback.correct-feedback {
+        display: block;
+        color: var(--correct);
+      }
+      
+      .wrong .feedback.wrong-feedback {
+        display: block;
+        color: var(--wrong);
       }
 
-      .progress-bar {
-        height: 10px;
-        background: var(--primary);
+      /* Results container */
+      #results {
+        background: var(--card-bg);
         border-radius: 10px;
-        width: 0%;
-        transition: width 0.4s ease;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--primary);
+        display: none;
+      }
+      
+      #results h2 {
+        color: var(--primary);
+        margin-top: 0;
+        text-align: center;
+      }
+      
+      .score-display {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      
+      .score-correct {
+        color: var(--correct);
+      }
+      
+      .score-total {
+        color: var(--primary);
+      }
+      
+      .percentage {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      
+      .restart-btn {
+        background: var(--primary);
+        margin-top: 1.5rem;
+      }
+      
+      .restart-btn:hover {
+        background: var(--primary-hover);
       }
     </style>
   </head>
@@ -206,18 +255,26 @@
         <div class="option">
           <input type="radio" name="q1" id="q1a" />
           <label for="q1a">Computer Style Sheets</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1b" />
           <label for="q1b">Creative Style System</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1c" />
           <label for="q1c">Cascading Style Sheets</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1d" />
           <label for="q1d">Colorful Style Syntax</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -228,18 +285,26 @@
         <div class="option">
           <input type="radio" name="q2" id="q2a" />
           <label for="q2a">text-color</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2b" />
           <label for="q2b">color</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2c" />
           <label for="q2c">font-color</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2d" />
           <label for="q2d">text-style</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -250,42 +315,56 @@
         <div class="option">
           <input type="radio" name="q3" id="q3a" />
           <label for="q3a">#header</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3b" />
           <label for="q3b">.header</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3c" />
           <label for="q3c">*header</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3d" />
           <label for="q3d">header#</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
     <!-- Question 4 -->
     <div class="question">
-      <h3>
-        4. Which property controls spacing between lines?
-      </h3>
+      <h3>4. Which property controls spacing between lines?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q4" id="q4a" />
           <label for="q4a">letter-spacing</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4b" />
           <label for="q4b">line-height</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4c" />
           <label for="q4c">word-spacing</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4d" />
           <label for="q4d">text-space</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -296,18 +375,26 @@
         <div class="option">
           <input type="radio" name="q5" id="q5a" />
           <label for="q5a">text: bold;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5b" />
           <label for="q5b">font-weight: bold;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5c" />
           <label for="q5c">style: bold;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5d" />
           <label for="q5d">bold: true;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -318,20 +405,26 @@
         <div class="option">
           <input type="radio" name="q6" id="q6a" />
           <label for="q6a">display: inline;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6b" />
           <label for="q6b">display: block;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6c" />
-          <label for="q6c"
-            >display: none;</label
-          >
+          <label for="q6c">display: none;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6d" />
           <label for="q6d">display: flex;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -342,18 +435,26 @@
         <div class="option">
           <input type="radio" name="q7" id="q7a" />
           <label for="q7a">// Comment</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7b" />
           <label for="q7b">&lt;-- Comment --&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7c" />
           <label for="q7c">/* Comment */</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7d" />
           <label for="q7d">** Comment **</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -364,18 +465,26 @@
         <div class="option">
           <input type="radio" name="q8" id="q8a" />
           <label for="q8a">position: absolute;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8b" />
           <label for="q8b">position: relative;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8c" />
           <label for="q8c">position: fixed;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8d" />
           <label for="q8d">position: static;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
@@ -386,65 +495,112 @@
         <div class="option">
           <input type="radio" name="q9" id="q9a" />
           <label for="q9a">border: black 1px solid;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9b" />
           <label for="q9b">border: 1px solid black;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9c" />
           <label for="q9c">border-style: solid black 1px;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9d" />
           <label for="q9d">border: solid 1px #000;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
     <!-- question 10 -->
     <div class="question">
-      <h3>
-        10. Which makes items align horizontally in Flexbox?
-      </h3>
+      <h3>10. Which makes items align horizontally in Flexbox?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q10" id="q10a" />
           <label for="q10a">flex-direction: column;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10b" />
           <label for="q10b">flex-direction: row;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10c" />
           <label for="q10c">flex-align: horizontal;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10d" />
           <label for="q10d">flex-flow: row-wrap;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
       </div>
     </div>
 
     <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+    
+    <!-- Results container -->
+    <div id="results">
+      <h2>Quiz Results</h2>
+      <div class="score-display">
+        You scored <span class="score-correct" id="correct-answers">0</span> 
+        out of <span class="score-total" id="total-questions">10</span>
+      </div>
+      <div class="percentage" id="percentage">0%</div>
+      <button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
 
     <script>
+      // Correct answers (match the `name` and `id` of each question)
+      const correctAnswers = {
+        q1: "q1c", // Q1: "Cascading Style Sheets"
+        q2: "q2b", // Q2: "color"
+        q3: "q3a", // Q3: "#header"
+        q4: "q4b", // Q4: "line-height "
+        q5: "q5b", // Q5: "font-weight: bold;"
+        q6: "q6b", // Q6: `display: block;`
+        q7: "q7c", // Q7: "/* Comment */"
+        q8: "q8b", // Q8: "position: relative; "
+        q9: "q9b", // Q9: "border: 1px solid black;"
+        q10: "q10b", // Q10: "flex-direction: row;"
+      };
+
+      // Add event listeners to all radio buttons for immediate feedback
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const questionName = this.name;
+          const selectedId = this.id;
+          
+          // Remove all feedback classes from options in this question
+          document.querySelectorAll(`input[name="${questionName}"]`).forEach(input => {
+            input.parentElement.classList.remove('correct', 'wrong');
+          });
+          
+          // Check if selected answer is correct
+          if (selectedId === correctAnswers[questionName]) {
+            this.parentElement.classList.add('correct');
+          } else {
+            this.parentElement.classList.add('wrong');
+            // Also highlight the correct answer
+            document.getElementById(correctAnswers[questionName]).parentElement.classList.add('correct');
+          }
+        });
+      });
+
       function checkAnswers() {
         let score = 0;
-
-        // Correct answers (match the `name` and `id` of each question)
-        const correctAnswers = {
-          q1: "q1c", // Q1: "Cascading Style Sheets"
-          q2: "q2b", // Q2: "color"
-          q3: "q3a", // Q3: "#header"
-          q4: "q4b", // Q4: "line-height "
-          q5: "q5b", // Q5: "font-weight: bold;"
-          q6: "q6b", // Q6: `display: block;`
-          q7: "q7c", // Q7: "/* Comment */"
-          q8: "q8b", // Q8: "position: relative; "
-          q9: "q9b", // Q9: "border: 1px solid black;"
-          q10: "q10b", // Q10: "flex-direction: row;"
-        };
 
         // Check each question
         for (const question in correctAnswers) {
@@ -452,26 +608,46 @@
             `input[name="${question}"]:checked`
           );
 
-          if (
-            selectedOption &&
-            selectedOption.id === correctAnswers[question]
-          ) {
+          if (selectedOption && selectedOption.id === correctAnswers[question]) {
             score++;
-            // Optional: Highlight correct answer (add CSS class)
-            selectedOption.parentElement.classList.add("correct");
-          } else if (selectedOption) {
-            // Optional: Highlight wrong answer
-            selectedOption.parentElement.classList.add("wrong");
           }
         }
 
-        alert(
-          `Your score: ${score} out of ${Object.keys(correctAnswers).length}`
-        );
+        // Display results
+        const resultsContainer = document.getElementById('results');
+        const correctDisplay = document.getElementById('correct-answers');
+        const totalDisplay = document.getElementById('total-questions');
+        const percentageDisplay = document.getElementById('percentage');
+        
+        correctDisplay.textContent = score;
+        totalDisplay.textContent = Object.keys(correctAnswers).length;
+        const percentage = Math.round((score / Object.keys(correctAnswers).length) * 100);
+        percentageDisplay.textContent = `${percentage}%`;
+        
+        // Show results container
+        resultsContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
       }
 
       function back() {
         window.location.href = "./css.html";
+      }
+      
+      function restartQuiz() {
+        // Reset all selections and styling
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+          radio.checked = false;
+          radio.parentElement.classList.remove('correct', 'wrong');
+        });
+        
+        // Hide results
+        document.getElementById('results').style.display = 'none';
+        
+        // Scroll back to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
   </body>

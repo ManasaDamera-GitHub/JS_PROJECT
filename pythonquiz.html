@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        
+        header {
+            background: #61605d;
+            color: #fff;
+            /* padding: 1rem 0; */
+            text-align: center;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 20px;
+            /* background: #fff; */
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+        }
+        
+        h1, h2 {
+            color: #fff;
+        }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .quiz-container {
+            margin-top: 30px;
+        }
+        
+        .question {
+            background: #c8c6c6;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #61605d;
+        }
+        
+        .options {
+            margin: 10px 0;
+        }
+        
+        .option {
+            margin: 5px 0;
+            padding: 8px;
+            background: #f4f4f4;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .option:hover {
+            background: #ddd;
+        }
+        
+        .option.selected {
+            background: #3776ab;
+            color: white;
+        }
+        
+        .option.correct {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .option.incorrect {
+            background: #f44336;
+            color: white;
+        }
+        
+        button {
+            background: #929291;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #61605d;
+            color: #fff;
+        }
+        
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background: #dff0d8;
+            color: #3c763d;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #61605d;
+            text-decoration: none;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Python Programming Quiz</h1>
+            <p>Test your knowledge of Python</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <a href="python.html" class="back-link">← Back to Python Introduction</a>
+        
+        <div class="quiz-container">
+            <div id="quiz"></div>
+            <button id="submit">Submit Quiz</button>
+            <button id="retry" style="display: none;">Try Again</button>
+            <div id="result"></div>
+        </div>
+    </div>
+    
+    <script>
+        const quizData = [
+            {
+                question: "Who created Python?",
+                options: [
+                    "Dennis Ritchie",
+                    "Guido van Rossum",
+                    "Linus Torvalds",
+                    "Bjarne Stroustrup"
+                ],
+                answer: "Guido van Rossum"
+            },
+            {
+                question: "In which year was Python first released?",
+                options: ["1989", "1991", "1995", "2000"],
+                answer: "1991"
+            },
+            {
+                question: "Which of these is NOT a Python data type?",
+                options: ["tuple", "list", "array", "dictionary"],
+                answer: "array"
+            },
+            {
+                question: "What is the correct file extension for Python files?",
+                options: [".py", ".pyt", ".pt", ".python"],
+                answer: ".py"
+            },
+            {
+                question: "Which keyword is used to define a function in Python?",
+                options: ["def", "function", "define", "func"],
+                answer: "def"
+            },
+            {
+                question: "What does PEP stand for in Python?",
+                options: [
+                    "Python Enhancement Proposal",
+                    "Python Execution Process",
+                    "Python Evaluation Protocol",
+                    "Python Extension Package"
+                ],
+                answer: "Python Enhancement Proposal"
+            },
+            {
+                question: "Which of these is used to make single-line comments in Python?",
+                options: ["//", "#", "/*", "--"],
+                answer: "#"
+            },
+            {
+                question: "What is the output of: print(3 * 'hi')?",
+                options: ["hihihi", "3hi", "Error", "hi hi hi"],
+                answer: "hihihi"
+            },
+            {
+                question: "Which module is used for working with regular expressions in Python?",
+                options: ["regex", "re", "pyregex", "regexp"],
+                answer: "re"
+            },
+            {
+                question: "What is the purpose of the __init__ method in Python classes?",
+                options: [
+                    "To initialize the class definition",
+                    "To create class variables",
+                    "To initialize a newly created object",
+                    "To import modules"
+                ],
+                answer: "To initialize a newly created object"
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+        const submitButton = document.getElementById('submit');
+        const retryButton = document.getElementById('retry');
+        const resultContainer = document.getElementById('result');
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedOptions = [];
+
+        function buildQuiz() {
+            quizContainer.innerHTML = '';
+            selectedOptions = [];
+            
+            quizData.forEach((questionData, questionIndex) => {
+                const questionElement = document.createElement('div');
+                questionElement.classList.add('question');
+                questionElement.innerHTML = `<h3>${questionIndex + 1}. ${questionData.question}</h3>`;
+                
+                const optionsElement = document.createElement('div');
+                optionsElement.classList.add('options');
+                
+                questionData.options.forEach((option, optionIndex) => {
+                    const optionElement = document.createElement('div');
+                    optionElement.classList.add('option');
+                    optionElement.textContent = option;
+                    optionElement.dataset.questionIndex = questionIndex;
+                    optionElement.dataset.optionIndex = optionIndex;
+                    
+                    optionElement.addEventListener('click', () => selectOption(optionElement, questionIndex, optionIndex));
+                    
+                    optionsElement.appendChild(optionElement);
+                });
+                
+                questionElement.appendChild(optionsElement);
+                quizContainer.appendChild(questionElement);
+                selectedOptions.push(null);
+            });
+        }
+
+        function selectOption(optionElement, questionIndex, optionIndex) {
+            // Remove selected class from all options in this question
+            const options = document.querySelectorAll(`.option[data-question-index="${questionIndex}"]`);
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            optionElement.classList.add('selected');
+            
+            // Store the selected option
+            selectedOptions[questionIndex] = optionIndex;
+        }
+
+        function showResults() {
+            // Calculate score
+            score = 0;
+            quizData.forEach((questionData, questionIndex) => {
+                const selectedOptionIndex = selectedOptions[questionIndex];
+                if (selectedOptionIndex !== null) {
+                    const selectedOption = questionData.options[selectedOptionIndex];
+                    if (selectedOption === questionData.answer) {
+                        score++;
+                        
+                        // Highlight correct answer
+                        const options = document.querySelectorAll(`.option[data-question-index="${questionIndex}"]`);
+                        options.forEach(opt => {
+                            if (opt.textContent === questionData.answer) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    } else {
+                        // Highlight incorrect answer and correct answer
+                        const options = document.querySelectorAll(`.option[data-question-index="${questionIndex}"]`);
+                        options.forEach(opt => {
+                            if (opt.textContent === questionData.answer) {
+                                opt.classList.add('correct');
+                            } else if (opt.textContent === questionData.options[selectedOptionIndex]) {
+                                opt.classList.add('incorrect');
+                            }
+                        });
+                    }
+                }
+            });
+            
+            // Show result
+            const percentage = Math.round((score / quizData.length) * 100);
+            resultContainer.textContent = `You scored ${score} out of ${quizData.length} (${percentage}%)`;
+            resultContainer.className = 'success';
+            resultContainer.style.display = 'block';
+            
+            // Hide submit button, show retry button
+            submitButton.style.display = 'none';
+            retryButton.style.display = 'inline-block';
+        }
+
+        function retryQuiz() {
+            buildQuiz();
+            resultContainer.style.display = 'none';
+            submitButton.style.display = 'inline-block';
+            retryButton.style.display = 'none';
+            score = 0;
+            selectedOptions = [];
+        }
+
+        // Event listeners
+        submitButton.addEventListener('click', showResults);
+        retryButton.addEventListener('click', retryQuiz);
+
+        // Build the quiz when the page loads
+        buildQuiz();
+    </script>
+</body>
+</html>

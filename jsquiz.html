@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Quiz</title>
+ <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: start;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #2c3e50;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* Introduction Page Styles */
+.section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.code-example {
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e83e8c;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Quiz Page Styles */
+.quiz-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn {
+    background: #6a6b6b;
+    color: #ccc;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: #454546;
+    color: #fff;
+}
+
+.btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.question {
+    margin-bottom: 1.5rem;
+}
+
+.question-text {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.option {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #e9ecef;
+}
+
+.option.selected {
+    background: #3498db;
+    color: white;
+}
+
+#results {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: none;
+}
+
+#results.good {
+    background: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+#results.average {
+    background: #fff3cd;
+    color: #856404;
+    display: block;
+}
+
+#results.bad {
+    background: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+
+.question {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.feedback {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    background: #d4edda;
+    color: #155724;
+}
+
+.feedback.incorrect {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+#try-again {
+    margin-top: 1rem;
+    background: #2c3e50;
+}
+
+#try-again:hover {
+    background: #1a252f;
+}
+ </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="javascript.html">← Back to Introduction</a></li>
+            </ul>
+        </nav>
+        <h1>JavaScript Quiz</h1>
+    </header>
+
+    <main>
+        <div class="quiz-container">
+            <div id="quiz"></div>
+            <div class="controls">
+                <button id="submit" class="btn">Submit Quiz</button>
+            </div>
+            <div id="results"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Good luck with your JavaScript learning journey!</p>
+    </footer>
+
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+    const quizContainer = document.getElementById('quiz');
+    const resultsContainer = document.getElementById('results');
+    const submitButton = document.getElementById('submit');
+    
+    // Quiz questions
+    const questions = [
+        {
+            question: "What is JavaScript primarily used for in web development?",
+            options: [
+                "Styling web pages",
+                "Adding interactivity to web pages",
+                "Creating database schemas",
+                "Defining page structure"
+            ],
+            correctAnswer: 1
+        },
+        {
+            question: "Which of the following is NOT a JavaScript data type?",
+            options: [
+                "String",
+                "Boolean",
+                "Number",
+                "Float"
+            ],
+            correctAnswer: 3
+        },
+        {
+            question: "What does DOM stand for in JavaScript?",
+            options: [
+                "Document Object Model",
+                "Data Object Management",
+                "Digital Output Module",
+                "Display Object Method"
+            ],
+            correctAnswer: 0
+        },
+        {
+            question: "Which keyword is used to declare a variable in modern JavaScript?",
+            options: [
+                "var",
+                "let",
+                "const",
+                "All of the above"
+            ],
+            correctAnswer: 3
+        },
+        {
+            question: "What will 'console.log(typeof null)' output?",
+            options: [
+                "null",
+                "undefined",
+                "object",
+                "number"
+            ],
+            correctAnswer: 2
+        }
+    ];
+    
+    let answers = new Array(questions.length).fill(null);
+    
+    // Display all quiz questions at once
+    function displayQuiz() {
+        const questionsHTML = questions.map((question, qIndex) => {
+            return `
+                <div class="question">
+                    <div class="question-text">${qIndex + 1}. ${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, oIndex) => `
+                            <div class="option ${answers[qIndex] === oIndex ? 'selected' : ''}" 
+                                 data-qindex="${qIndex}" 
+                                 data-oindex="${oIndex}">${option}</div>
+                        `).join('')}
+                    </div>
+                    ${answers[qIndex] !== null ? 
+                        `<div class="feedback ${answers[qIndex] === question.correctAnswer ? 'correct' : 'incorrect'}">
+                            ${answers[qIndex] === question.correctAnswer ? 
+                                '✓ Correct!' : 
+                                `✗ Incorrect! The correct answer is: ${question.options[question.correctAnswer]}`}
+                        </div>` : ''}
+                </div>
+            `;
+        }).join('');
+        
+        quizContainer.innerHTML = questionsHTML;
+        
+        // Add event listeners to options
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                const qIndex = parseInt(this.getAttribute('data-qindex'));
+                const oIndex = parseInt(this.getAttribute('data-oindex'));
+                answers[qIndex] = oIndex;
+                displayQuiz();
+            });
+        });
+    }
+    
+    // Show results
+    function showResults() {
+        let score = 0;
+        questions.forEach((question, index) => {
+            if (answers[index] === question.correctAnswer) {
+                score++;
+            }
+        });
+        
+        const percentage = (score / questions.length) * 100;
+        let resultClass = 'average';
+        
+        if (percentage >= 80) {
+            resultClass = 'good';
+        } else if (percentage < 50) {
+            resultClass = 'bad';
+        }
+        
+        resultsContainer.className = resultClass;
+        resultsContainer.innerHTML = `
+            <h3>Quiz Results</h3>
+            <p>You scored ${score} out of ${questions.length} (${percentage.toFixed(1)}%)</p>
+            ${percentage >= 80 ? 
+                '<p>Excellent! You have a strong understanding of JavaScript basics.</p>' : 
+                percentage >= 50 ? 
+                '<p>Good effort! Review the questions you missed to improve.</p>' : 
+                '<p>Keep practicing! JavaScript takes time to master.</p>'}
+            <button id="try-again" class="btn">Try Again</button>
+        `;
+        
+        // Add event listener to try again button
+        document.getElementById('try-again').addEventListener('click', function() {
+            answers = new Array(questions.length).fill(null);
+            resultsContainer.className = '';
+            resultsContainer.innerHTML = '';
+            displayQuiz();
+            submitButton.disabled = false;
+        });
+    }
+    
+    // Event listener for submit button
+    submitButton.addEventListener('click', function() {
+        // Check if all questions are answered
+        if (answers.includes(null)) {
+            alert('Please answer all questions before submitting.');
+            return;
+        }
+        
+        showResults();
+        submitButton.disabled = true;
+    });
+    
+    // Initialize the quiz
+    displayQuiz();
+});
+    </script>
+</body>
+</html>

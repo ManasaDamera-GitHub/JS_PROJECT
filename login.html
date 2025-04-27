@@ -16,6 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        overflow: hidden;
       }
 
       body {
@@ -269,7 +270,7 @@
         <input type="password" id="pass" placeholder="Enter your Password" />
         <span id="passError"></span>
         <input type="submit" />
-        <p onclick="sign()">Don't have an account? <u>Create one</u></p>
+        <p onclick="sign()" style="cursor: pointer;">Don't have an account? <i>Create one</i></p>
       </form>
       <div class="input">
         <button id="google-login-btn" class="google-button">
@@ -283,7 +284,6 @@
 
     <script>
       function guest() {
-        alert("Guest login");
         window.location.href = "./filter.html";
       }
       function sign() {

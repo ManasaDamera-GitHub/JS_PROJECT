@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Introduction</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+     <style>
+       *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+       }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #3498db;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 20px;
+}
+button{
+    background-color: #2c3e50;
+    padding: 0.8rem 3.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    margin: 1rem auto;
+    transition: background-color 0.3s;
+}
+button a{
+    color: white;
+    font-size: 16px;
+    
+}
+
+button:hover {
+    background-color: #26394d;
+}
+
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #2c3e50;
+    color: white;
+    margin-top: 2rem;
+}
+footer p a{
+    color: #fff;
+    font-style: italic;
+}
+
+/* Introduction Page Styles */
+.section {
+    background: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.code-example {
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 1rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e83e8c;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Quiz Page Styles */
+.quiz-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: #2980b9;
+}
+
+.btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+}
+
+.question {
+    margin-bottom: 1.5rem;
+}
+
+.question-text {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.option {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background: #e9ecef;
+}
+
+.option.selected {
+    background: #3498db;
+    color: white;
+}
+
+#results {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: none;
+}
+
+#results.good {
+    background: #d4edda;
+    color: #155724;
+    display: block;
+}
+
+#results.average {
+    background: #fff3cd;
+    color: #856404;
+    display: block;
+}
+
+#results.bad {
+    background: #f8d7da;
+    color: #721c24;
+    display: block;
+}
+.back{
+    display: flex;
+    justify-content: start;
+    color: #fff;
+}
+
+     </style>
+</head>
+<body>
+    <header>
+        <a href="./filter.html" class="back">← Back</a>
+        <h1>Welcome to JavaScript</h1>
+        <nav>
+            <ul>
+                <li><a href="#intro">Introduction</a></li>
+                <li><a href="#features">Features</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro" class="section">
+            <h2>Introduction to JavaScript</h2>
+            <div class="content">
+                <p>JavaScript is a high-level, interpreted programming language that conforms to the ECMAScript specification. It is a language that is also characterized as dynamic, weakly typed, prototype-based and multi-paradigm.</p>
+                <p>Alongside HTML and CSS, JavaScript is one of the core technologies of the World Wide Web. JavaScript enables interactive web pages and is an essential part of web applications.</p>
+                <div class="code-example">
+                    <h3>Simple JavaScript Example</h3>
+                    <pre><code>function greet(name) {
+    return "Hello, " + name + "!";
+}
+console.log(greet("World")); // Output: Hello, World!</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="section">
+            <h2>Key Features of JavaScript</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Client-side Execution</h3>
+                    <p>JavaScript runs on the user's browser, reducing server load and providing immediate feedback.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Event Handling</h3>
+                    <p>JavaScript can respond to user actions like clicks, mouse movements, and keyboard input.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Asynchronous Programming</h3>
+                    <p>With promises and async/await, JavaScript handles asynchronous operations efficiently.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>DOM Manipulation</h3>
+                    <p>JavaScript can dynamically modify HTML and CSS to create interactive web pages.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Cross-platform</h3>
+                    <p>JavaScript works across all modern browsers and can even be used for server-side (Node.js) and mobile development.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Versatility</h3>
+                    <p>JavaScript supports multiple programming paradigms: object-oriented, functional, and imperative.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <button><a href="jsquiz.html">Take the JavaScript Quiz!</a></button>
+
+    <footer>
+        <p>Ready to test your knowledge? </p>
+    </footer>
+
+    <script>
+        // This script is for the main page functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                // For external links, let the default behavior happen
+                return true;
+            }
+        });
+    });
+
+    // Add animation to feature cards when they come into view
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    featureCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(card);
+    });
+});
+    </script>
+</body>
+</html>

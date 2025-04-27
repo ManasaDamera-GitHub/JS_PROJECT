@@ -259,9 +259,11 @@ function displayData(data) {
                 <a href="${obj.link}"><p><strong>${obj.title}</strong></p><i>Ready to learn? Start the course now</i></a>
                 <p>Price: ${obj.price}</p>
                 <p>Category: ${obj.category}</p>
-                <button class="btn buy-btn">Buy</button>
-                <button class="btn mycor-btn">add to Cart</button>
-                <button class="btn heart-btn"><i class="far fa-heart"></i></button>
+                <div class="card-actions">
+        <button class="btn buy-btn">Buy</button>
+        <button class="btn mycor-btn">Add to Cart</button>
+        <button class="btn heart-btn"><i class="far fa-heart"></i></button>
+    </div>
             `;
       div2.appendChild(item);
       container.appendChild(div2);
