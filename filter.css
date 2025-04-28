@@ -10,6 +10,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    
 }
 
 :root {
@@ -106,7 +107,6 @@ header {
     color: #61605d;
     transition: color var(--transition-speed);
 }
-
 #theme-toggle:hover {
     color: #ccc;
 }
@@ -147,9 +147,9 @@ header {
 
 #favourites-link:hover,
 #cart-link:hover {
-    background-color: #61605d;
+    /* background-color: #61605d; */
     transform: scale(1.05);
-    color: #fff;
+    color: #987070;
 }
 
 /* Dropdown Container */
@@ -308,12 +308,16 @@ a{
 @media (max-width: 768px) {
     header {
         /* flex-direction: column; */
-        /* gap: 0.2rem; */
+        gap: 0px;
         /* padding: 1rem; */
+        padding: 0px;
         
     }
 header p{
     display: block;
+}
+#headSearch{
+    display: none;
 }
 
     #searchBar {
@@ -335,6 +339,7 @@ header p{
     .home h1 {
         font-size: 2rem;
     }
+
 }
 
 
@@ -520,12 +525,12 @@ header p{
 .menu a {
     text-decoration: none;
     color: black;
-    font-size: 18px;
+    font-size: 16px;
     transition: color 0.3s;
 }
 
 .menu a:hover {
-    color: blue;
+    color: #987070;
 }
 
 
@@ -535,7 +540,7 @@ header p{
 }
 
 .login {
-    border: 2px solid blue;
+    border: 2px solid #987070;
     background: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -543,7 +548,7 @@ header p{
 }
 
 .register {
-    background-color: blue;
+    background-color: #987070;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -572,6 +577,7 @@ header p{
         background-color: white;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         padding: 10px 0;
+        font-size: 16px;
     }
 
     .menu li {
@@ -586,6 +592,11 @@ header p{
     .menu.show {
         display: flex;
     }
+    .menu li a{
+        font-size: 12px;
+        gap: 0px;
+    }
+
 }
 .course-card {
     position: relative;

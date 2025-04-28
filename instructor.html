@@ -11,20 +11,25 @@
 </head>
 <body>
     
-        <header class="page-header">
-                <p style="font-size: 1.2rem; color: #2c3e50; font-family: 'Georgia', serif;font-weight: 600;"><i class="fas fa-graduation-cap" style="font-size: 48px; color: #2c3e50;"></i>NexGen Institute</p>
-                
-            <div class="header-title">
-                <h1>Instructor Portal</h1>
-            </div>
-            <div class="header-spacer"></div> 
-            <div>
-                <button class="logout-btn" onclick="logOut()">
-                    <i class="fas fa-sign-out-alt logout-icon"></i>
-                    <span>Logout</span>
-                </button>
-            </div>
-        </header>
+    <header class="page-header">
+        <div class="header-brand">
+            <i class="fas fa-graduation-cap brand-icon"></i>
+            <span class="brand-text">NexGen Institute</span>
+        </div>
+        
+        <div class="header-title">
+            <h1>Instructor Portal</h1>
+        </div>
+        
+        <div class="header-spacer"></div>
+        
+        <div class="header-actions">
+            <button class="logout-btn" onclick="logOut()">
+                <i class="fas fa-sign-out-alt logout-icon"></i>
+                <span class="logout-text">Logout</span>
+            </button>
+        </div>
+    </header>
 
     <div class="container">
         <input type="hidden" placeholder="id" id="id"><br>

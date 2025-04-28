@@ -13,12 +13,13 @@
       :root {
         --primary: #5a5b5d;
         --primary-hover: #484849;
-        --correct: #4cc9f0;
-        --wrong: #f72585;
+        --correct: #09a02f;
+        --wrong: #f72525;
         --background: #f8f9fa;
         --card-bg: #ffffff;
         --text: #333333;
         --border: #e0e0e0;
+        
       }
       /* Replace your existing header styles with this */
       header {
@@ -35,15 +36,12 @@
       }
 
       .header-container {
-        /* max-width: 700px; */
         margin: 0 auto;
         padding: 0 2rem;
         display: flex;
         justify-content: space-between;
-        /* position: relative; */
       }
 
-      /* Keep all your other existing styles */
       .back-btn {
         background: none;
         border: none;
@@ -53,7 +51,7 @@
         padding: 0.5rem 1rem;
         border-radius: 6px;
         transition: all 0.3s ease;
-       width: 100px;
+        width: 100px;
       }
 
       .back-btn:hover {
@@ -126,6 +124,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+        position: relative;
       }
 
       .option:hover {
@@ -163,7 +162,7 @@
         transform: translateY(0);
       }
 
-      /* Feedback for correct/wrong answers (JS-added classes) */
+      /* Feedback for correct/wrong answers */
       .option.correct {
         background: rgba(76, 201, 240, 0.2);
         border-left: 4px solid var(--correct);
@@ -174,20 +173,90 @@
         border-left: 4px solid var(--wrong);
       }
 
-      /* Progress bar */
-      .progress-container {
-        width: 100%;
-        background: #e0e0e0;
-        border-radius: 10px;
-        margin-bottom: 2rem;
+      /* Feedback indicator */
+      .feedback {
+        margin-left: auto;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        display: none;
+      }
+      
+      .correct .feedback.correct-feedback {
+        display: block;
+        color: var(--correct);
+      }
+      
+      .wrong .feedback.wrong-feedback {
+        display: block;
+        color: var(--wrong);
       }
 
-      .progress-bar {
-        height: 10px;
-        background: var(--primary);
+      /* Results container */
+      #results {
+        background: var(--card-bg);
         border-radius: 10px;
-        width: 0%;
-        transition: width 0.4s ease;
+        padding: 1.5rem;
+        margin-top: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-left: 4px solid var(--primary);
+        display: none;
+      }
+      
+      #results h2 {
+        color: var(--primary);
+        margin-top: 0;
+        text-align: center;
+      }
+      
+      .score-display {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      
+      .score-correct {
+        color: var(--correct);
+      }
+      
+      .score-total {
+        color: var(--primary);
+      }
+      
+      .percentage {
+        font-size: 1.2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      
+      .restart-btn {
+        background: var(--primary);
+        margin-top: 1.5rem;
+      }
+      
+      .restart-btn:hover {
+        background: var(--primary-hover);
+      }
+      
+      /* Explanation styling */
+      .explanation {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: rgba(67, 97, 238, 0.05);
+        border-radius: 8px;
+        display: none;
+      }
+      
+      .explanation.show {
+        display: block;
+      }
+      
+      .explanation-title {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--primary);
       }
     </style>
   </head>
@@ -201,253 +270,400 @@
       </div>
     </header>
     <div class="question">
-      <h3>1.What does HTML stand for?</h3>
+      <h3>1. What does HTML stand for?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q1" id="q1a" />
-          <label for="q1a">Hyper Text Markup Language</label>
+          <label for="q1a">Hyperlinks and Text Markup Language</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1b" />
-          <label for="q1b">Hyperlinks and Text Markup Language</label>
+          <label for="q1b">Home Tool Markup Language</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1c" />
-          <label for="q1c">Home Tool Markup Language</label>
+          <label for="q1c">Hyper Text Markup Language</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q1" id="q1d" />
           <label for="q1d">Hyper Transfer Markup Language</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q1">
+        <div class="explanation-title">Explanation:</div>
+        HTML stands for Hyper Text Markup Language. It's the standard markup language for creating web pages and web applications.
       </div>
     </div>
     <!-- Question 2 -->
     <div class="question">
-      <h3>2. Which tag is used to define an unordered list?</h3>
+      <h3>2. Which tag is used to create a hyperlink?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q2" id="q2a" />
-          <label for="q2a">&lt;ol&gt;</label>
+          <label for="q2a">&lt;link&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2b" />
-          <label for="q2b">&lt;li&gt;</label>
+          <label for="q2b">&lt;a&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2c" />
-          <label for="q2c">&lt;ul&gt;</label>
+          <label for="q2c">&lt;href&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q2" id="q2d" />
-          <label for="q2d">&lt;list&gt;</label>
+          <label for="q2d">&lt;hyperlink&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q2">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;a&gt; tag defines a hyperlink, which is used to link from one page to another. The href attribute specifies the URL of the page the link goes to.
       </div>
     </div>
     <!-- Question 3 -->
     <div class="question">
-      <h3>3. Which HTML element is used to display a horizontal line?</h3>
+      <h3>3. Which tag is used to create an unordered list?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q3" id="q3a" />
-          <label for="q3a">&lt;br&gt;</label>
+          <label for="q3a">&lt;ol&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3b" />
-          <label for="q3b">&lt;line&gt;</label>
+          <label for="q3b">&lt;ul&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3c" />
-          <label for="q3c">&lt;hr&gt;</label>
+          <label for="q3c">&lt;li&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q3" id="q3d" />
-          <label for="q3d">&lt;div&gt;</label>
+          <label for="q3d">&lt;list&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q3">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;ul&gt; tag defines an unordered (bulleted) list. Use the &lt;ul&gt; tag together with the &lt;li&gt; tag to create unordered lists.
       </div>
     </div>
     <!-- Question 4 -->
     <div class="question">
-      <h3>
-        4. Which attribute is used to provide a unique identifier for an HTML
-        element?
-      </h3>
+      <h3>4. Which is the correct HTML5 document structure?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q4" id="q4a" />
-          <label for="q4a">class</label>
+          <label for="q4a">&lt;html&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4b" />
-          <label for="q4b">name</label>
+          <label for="q4b">&lt;html&gt;&lt;title&gt;&lt;/title&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4c" />
-          <label for="q4c">id</label>
+          <label for="q4c">&lt;head&gt;&lt;html&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q4" id="q4d" />
-          <label for="q4d">src</label>
+          <label for="q4d">&lt;html&gt;&lt;body&gt;&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;&lt;/body&gt;&lt;/html&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q4">
+        <div class="explanation-title">Explanation:</div>
+        The correct HTML5 document structure includes the &lt;html&gt; root element containing &lt;head&gt; (with &lt;title&gt;) and &lt;body&gt; sections. The &lt;head&gt; comes before &lt;body&gt; and contains metadata.
       </div>
     </div>
     <!-- Question 5 -->
     <div class="question">
-      <h3>5. Which tag is used to embed an image in HTML?</h3>
+      <h3>5. Which attribute is used to provide additional information about an element?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q5" id="q5a" />
-          <label for="q5a">&lt;img&gt;</label>
+          <label for="q5a">info</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5b" />
-          <label for="q5b">&lt;image&gt;</label>
+          <label for="q5b">data</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5c" />
-          <label for="q5c">&lt;picture&gt;</label>
+          <label for="q5c">title</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q5" id="q5d" />
-          <label for="q5d">&lt;src&gt;</label>
+          <label for="q5d">meta</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q5">
+        <div class="explanation-title">Explanation:</div>
+        The title attribute provides additional "tool-tip" information when the mouse hovers over an element. While data-* attributes can also store extra information, title is the standard attribute for supplementary information.
       </div>
     </div>
     <!-- Question 6 -->
     <div class="question">
-      <h3>6. What is the correct HTML for creating a hyperlink?</h3>
+      <h3>6. Which tag is used to define a table row?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q6" id="q6a" />
-          <label for="q6a">&lt;a&gt;https://example.com&lt;/a&gt;</label>
+          <label for="q6a">&lt;table&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6b" />
-          <label for="q6b"
-            >&lt; a url="https://example.com"&gt;Example &lt;/a &gt;
-          </label>
+          <label for="q6b">&lt;td&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6c" />
-          <label for="q6c"
-            >&lt;a href="https://example.com" &gt;Example&lt;/link&gt;</label
-          >
+          <label for="q6c">&lt;tr&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q6" id="q6d" />
-          <label for="q6d">&lt;link&gt;https://example.com &lt;/link&gt;</label>
+          <label for="q6d">&lt;th&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q6">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;tr&gt; tag defines a table row. A table row contains one or more &lt;th&gt; or &lt;td&gt; elements (table headers or table data cells).
       </div>
     </div>
     <!-- Question 7 -->
     <div class="question">
-      <h3>7. Which HTML5 element is used to define a navigation menu?</h3>
+      <h3>7. What is the correct HTML for inserting an image?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q7" id="q7a" />
-          <label for="q7a">&lt;menu&gt;</label>
+          <label for="q7a">&lt;img href="image.jpg" alt="My Image"&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7b" />
-          <label for="q7b">&lt;nav&gt;</label>
+          <label for="q7b">&lt;img src="image.jpg" alt="My Image"&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7c" />
-          <label for="q7c">&lt;navigation&gt;</label>
+          <label for="q7c">&lt;image src="image.jpg" alt="My Image"&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q7" id="q7d" />
-          <label for="q7d">&lt;links&gt;</label>
+          <label for="q7d">&lt;img alt="My Image"&gt;image.jpg&lt;/img&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q7">
+        <div class="explanation-title">Explanation:</div>
+        The correct HTML for inserting an image uses the &lt;img&gt; tag with src (source) and alt (alternative text) attributes. The img tag is self-closing and doesn't have a closing tag.
       </div>
     </div>
     <!-- Question 8 -->
     <div class="question">
-      <h3>8. Which tag is used to define a table row in HTML?</h3>
+      <h3>8. Which tag is used to define a paragraph?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q8" id="q8a" />
-          <label for="q8a">&lt;td&gt;</label>
+          <label for="q8a">&lt;para&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8b" />
-          <label for="q8b">&lt;tr&gt;</label>
+          <label for="q8b">&lt;p&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8c" />
-          <label for="q8c">&lt;th&gt;</label>
+          <label for="q8c">&lt;paragraph&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q8" id="q8d" />
-          <label for="q8d">&lt;table-row&gt;</label>
+          <label for="q8d">&lt;text&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q8">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;p&gt; tag defines a paragraph. Browsers automatically add some margin before and after each paragraph element.
       </div>
     </div>
     <!-- Question 9 -->
     <div class="question">
-      <h3>9. Which HTML tag is used for the largest heading?</h3>
+      <h3>9. Which HTML5 element is used for navigation links?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q9" id="q9a" />
-          <label for="q9a">&lt;h6&gt;</label>
+          <label for="q9a">&lt;links&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9b" />
-          <label for="q9b">&lt;heading&gt;</label>
+          <label for="q9b">&lt;nav&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9c" />
-          <label for="q9c">&lt;h1&gt;</label>
+          <label for="q9c">&lt;navigation&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q9" id="q9d" />
-          <label for="q9d">&lt;head&gt;</label>
+          <label for="q9d">&lt;navigate&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q9">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;nav&gt; element is an HTML5 semantic element that defines a set of navigation links. Not all links need to be in a &lt;nav&gt; element - it's intended for major navigation blocks.
       </div>
     </div>
     <!-- question 10 -->
     <div class="question">
-      <h3>
-        10. Which HTML element is used to define the main content of a document?
-      </h3>
+      <h3>10. Which HTML element is used to display a scalar measurement within a range?</h3>
       <div class="options">
         <div class="option">
           <input type="radio" name="q10" id="q10a" />
-          <label for="q10a">&lt;main&gt;</label>
+          <label for="q10a">&lt;range&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10b" />
-          <label for="q10b">&lt;content&gt;</label>
+          <label for="q10b">&lt;meter&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10c" />
-          <label for="q10c">&lt;body&gt;</label>
+          <label for="q10c">&lt;scale&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
         <div class="option">
           <input type="radio" name="q10" id="q10d" />
-          <label for="q10d">&lt;section&gt;</label>
+          <label for="q10d">&lt;measure&gt;</label>
+          <span class="feedback wrong-feedback">Incorrect</span>
+          <span class="feedback correct-feedback">Correct!</span>
         </div>
+      </div>
+      <div class="explanation" id="explanation-q10">
+        <div class="explanation-title">Explanation:</div>
+        The &lt;meter&gt; element represents a scalar measurement within a known range, or a fractional value. This is often displayed as a gauge (like disk usage or voting results).
       </div>
     </div>
 
     <button type="button" onclick="checkAnswers()">Submit Quiz</button>
+    
+    <!-- Results container -->
+    <div id="results">
+      <h2>Quiz Results</h2>
+      <div class="score-display">
+        You scored <span class="score-correct" id="correct-answers">0</span> 
+        out of <span class="score-total" id="total-questions">10</span>
+      </div>
+      <div class="percentage" id="percentage">0%</div>
+      <button class="restart-btn" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
 
     <script>
+      // Correct answers (match the `name` and `id` of each question)
+      const correctAnswers = {
+        q1: "q1c", // Q1: "Hyper Text Markup Language"
+        q2: "q2b", // Q2: "<a>"
+        q3: "q3b", // Q3: "<ul>"
+        q4: "q4a", // Q4: Correct HTML5 structure
+        q5: "q5c", // Q5: "title"
+        q6: "q6c", // Q6: "<tr>"
+        q7: "q7b", // Q7: Correct image tag
+        q8: "q8b", // Q8: "<p>"
+        q9: "q9b", // Q9: "<nav>"
+        q10: "q10b", // Q10: "<meter>"
+      };
+
+      // Add event listeners to all radio buttons for immediate feedback
+      document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          const questionName = this.name;
+          const selectedId = this.id;
+          
+          // Remove all feedback classes from options in this question
+          document.querySelectorAll(`input[name="${questionName}"]`).forEach(input => {
+            input.parentElement.classList.remove('correct', 'wrong');
+          });
+          
+          // Check if selected answer is correct
+          if (selectedId === correctAnswers[questionName]) {
+            this.parentElement.classList.add('correct');
+          } else {
+            this.parentElement.classList.add('wrong');
+            // Also highlight the correct answer
+            document.getElementById(correctAnswers[questionName]).parentElement.classList.add('correct');
+          }
+          
+          // Show explanation for this question
+          document.getElementById(`explanation-${questionName}`).classList.add('show');
+        });
+      });
+
       function checkAnswers() {
         let score = 0;
-
-        // Correct answers (match the `name` and `id` of each question)
-        const correctAnswers = {
-          q1: "q1a", // Q1: "Hyper Text Markup Language"
-          q2: "q2c", // Q2: "<ul>"
-          q3: "q3c", // Q3: "<hr>"
-          q4: "q4c", // Q4: "id"
-          q5: "q5a", // Q5: "<img>"
-          q6: "q6c", // Q6: `<a href="...">Example</a>`
-          q7: "q7b", // Q7: "<nav>"
-          q8: "q8b", // Q8: "<tr>"
-          q9: "q9c", // Q9: "<h1>"
-          q10: "q10a", // Q10: "<main>"
-        };
 
         // Check each question
         for (const question in correctAnswers) {
@@ -455,26 +671,54 @@
             `input[name="${question}"]:checked`
           );
 
-          if (
-            selectedOption &&
-            selectedOption.id === correctAnswers[question]
-          ) {
+          if (selectedOption && selectedOption.id === correctAnswers[question]) {
             score++;
-            // Optional: Highlight correct answer (add CSS class)
-            selectedOption.parentElement.classList.add("correct");
-          } else if (selectedOption) {
-            // Optional: Highlight wrong answer
-            selectedOption.parentElement.classList.add("wrong");
           }
+          
+          // Show all explanations when submitting
+          document.getElementById(`explanation-${question}`).classList.add('show');
         }
 
-        alert(
-          `Your score: ${score} out of ${Object.keys(correctAnswers).length}`
-        );
+        // Display results
+        const resultsContainer = document.getElementById('results');
+        const correctDisplay = document.getElementById('correct-answers');
+        const totalDisplay = document.getElementById('total-questions');
+        const percentageDisplay = document.getElementById('percentage');
+        
+        correctDisplay.textContent = score;
+        totalDisplay.textContent = Object.keys(correctAnswers).length;
+        const percentage = Math.round((score / Object.keys(correctAnswers).length) * 100);
+        percentageDisplay.textContent = `${percentage}%`;
+        
+        // Show results container
+        resultsContainer.style.display = 'block';
+        
+        // Scroll to results
+        resultsContainer.scrollIntoView({ behavior: 'smooth' });
       }
 
       function back() {
         window.location.href = "./html.html";
+      }
+      
+      function restartQuiz() {
+        // Reset all selections and styling
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(radio => {
+          radio.checked = false;
+          radio.parentElement.classList.remove('correct', 'wrong');
+        });
+        
+        // Hide all explanations
+        document.querySelectorAll('.explanation').forEach(exp => {
+          exp.classList.remove('show');
+        });
+        
+        // Hide results
+        document.getElementById('results').style.display = 'none';
+        
+        // Scroll back to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
   </body>

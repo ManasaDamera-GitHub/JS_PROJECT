@@ -1,838 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML COURSE</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Karma:wght@300;400;500;600;700&family=Pacifico&family=Playwrite+CZ:wght@100..400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Learning Hub</title>
     <style>
-        /* Enhanced CSS Styles for HTML Course Page */
         :root {
-            --primary-color: #3498db;
-            --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f3;
-            --dark-color: #333;
-            --success-color: #28a745;
-            --warning-color: #ffc107;
-            --text-color: #444;
-            --text-light: #777;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
+        *{
+            margin: 0px;
+            padding: 0px;
             box-sizing: border-box;
         }
-
+        html{
+            scroll-behavior: smooth;
+        }
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        :root {
-            --background-color: #f4f4f4;
-            --text-color: #333;
-            --card-background: #fff;
-            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --primary-color: #6200ea;
-            --primary-hover: #3700b3;
-            --transition-speed: 0.3s;
-        }
-
-        [data-theme="dark"] {
-            --background-color: #121212;
-            --text-color: #e0e0e0;
-            --card-background: #1e1e1e;
-            --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            --primary-color: #bb86fc;
-            --primary-hover: #3700b3;
-        }
-
-        [data-theme="dark"] .course-card div {
-            color: white !important;
-        }
-
-        /* Header Styles */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            background-color: var(--card-background);
-            box-shadow: var(--card-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            width: 100%;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            color: var(--secondary-color);
-            font-family: 'Georgia', serif;
-            font-weight: 600;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        #headSearch {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 15px;
-            background-color: #f5f5f5;
-            border-radius: 25px;
-            border: 1px solid #e0e0e0;
-            width: 300px;
-            transition: all 0.3s ease;
-        }
-
-        #headSearch:hover {
-            border-color: #434343;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        #headSearch input {
-            border: none;
-            background: transparent;
-            outline: none;
-            font-size: 14px;
-            width: 100%;
-            color: #333;
-        }
-
-        #headSearch input::placeholder {
-            color: #999;
-        }
-
-        #searchBar {
-            padding: 0.5rem 1rem;
-            border: 2px solid #fff;
-            border-radius: 25px;
-            width: 90%;
-            font-size: 1rem;
-            background-color: var(--card-background);
-            color: var(--text-color);
-            transition: border-color var(--transition-speed);
-        }
-
-        #searchBar:focus {
-            outline: none;
-        }
-
-        #theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #61605d;
-            transition: color var(--transition-speed);
-        }
-
-        #theme-toggle:hover {
-            color: #ccc;
-        }
-
-        /* Navigation Bar */
-        .navbar {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .menu {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
             margin: 0;
             padding: 0;
+            color: #333;
+            background-color: #f5f5f5;
         }
-
-        .menu a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all var(--transition-speed);
-        }
-
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-            color: #987070;
-        }
-
-        /* Favourites and Cart Links */
-        #favourites-link,
-        #cart-link {
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all var(--transition-speed);
-        }
-
-        #favourites-link:hover,
-        #cart-link:hover {
-            background-color: #61605d;
-            transform: scale(1.05);
-            color: #fff;
-        }
-
-        /* Cart and Favorites Count */
-        .badge {
-            position: relative;
-        }
-
-        .badge-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: var(--accent-color);
+        
+        header {
+            background: #4CAF50;
             color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Dropdown Container */
-        .dropdown-container {
-            position: relative;
-        }
-
-        .user-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: transform var(--transition-speed);
-        }
-
-        .user-btn:hover {
-            transform: scale(1.1);
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: var(--card-background);
-            border-radius: 5px;
-            box-shadow: var(--card-shadow);
-            z-index: 1000;
-            min-width: 150px;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all var(--transition-speed);
-        }
-
-        .dropdown a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--primary-color);
-        }
-
-        /* Show Dropdown on Hover */
-        .dropdown-container:hover .dropdown {
-            display: block;
-        }
-
-        /* Course Cards Container */
-        #courses-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-        }
-
-        .course-card {
-            background-color: var(--card-background);
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-        }
-
-        .course-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .course-img-container {
-            width: 100%;
-            height: 180px;
-            overflow: hidden;
-        }
-
-        .course-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .course-card:hover .course-img {
-            transform: scale(1.05);
-        }
-
-        .course-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .course-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-bottom: 0.75rem;
-            min-height: 3.5rem;
-        }
-
-        .course-description {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .course-meta {
+            /* padding: 1rem 0; */
+            text-align: center;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-            align-items: center;
+            background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
         }
-
-        .course-level {
-            background: var(--light-color);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-
-        .course-price {
-            color: var(--success-color);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .course-link {
-            display: inline-block;
-            text-align: center;
-            background: var(--primary-color);
-            color: white;
-            padding: 0.75rem;
-            border-radius: 5px;
+        header a{
+            justify-content: start;
+            padding: 20px;
+            color: #fff;
             text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            margin-top: 0.5rem;
+            font-size: bold;
+            /* margin-right: 1rem; */
         }
-
-        .course-link:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
-        .course-category {
-            display: inline-block;
-            background: #f0f0f0;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 0.5rem;
-        }
-
-        .course-actions {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            font-size: 0.9rem;
-            flex-grow: 1;
-        }
-
-        .btn i {
-            margin-right: 0.3rem;
-        }
-
-        .buy-btn {
-            background: var(--success-color);
+        
+        nav {
+            background: #333;
             color: white;
+            padding: 0.5rem 0;
         }
-
-        .buy-btn:hover {
-            background: #218838;
-        }
-
-        .mycor-btn {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .mycor-btn:hover {
-            background: #2980b9;
-        }
-
-        .heart-btn {
-            background: var(--accent-color);
-            color: white;
-            flex-grow: 0;
-            width: 40px;
-            padding: 0.5rem;
-        }
-
-        .heart-btn:hover {
-            background: #c0392b;
-        }
-
-        /* Footer Navigation */
-        footer {
-            background: linear-gradient(135deg, #ecf0f3, #dfe6e9);
-            padding: 1.5rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            position: sticky;
-            bottom: 0;
-            z-index: 100;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        footer button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            min-width: 120px;
-        }
-
-        footer button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Call-to-Action Section */
-        .course-container {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 10px;
-            margin: 2rem;
-            box-shadow: var(--shadow);
-        }
-
-        .course-container p {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1.5rem;
-            background: transparent;
-            box-shadow: none;
+        
+        nav ul {
             padding: 0;
+            list-style: none;
+            text-align: center;
         }
-
-        .course-container .buy-btn {
-            font-family: 'Karma', serif;
-            background: var(--success-color);
+        
+        nav li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        nav a {
             color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        section {
+            padding: 20px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        h1 {
+            color: #fff;
+            padding: 10px;
+            margin: auto;
+        }
+        
+        .btn {
             display: inline-block;
-        }
-
-        .course-container .buy-btn:hover {
-            background: #218838;
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: none;
-            color: var(--text-color);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .logo {
-                align-self: flex-start;
-            }
-
-            #headSearch {
-                width: 100%;
-            }
-
-            .menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                gap: 0.5rem;
-            }
-
-            .menu.show {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 1rem;
-                right: 1rem;
-            }
-
-            .dropdown-container {
-                margin-top: 1rem;
-            }
-
-            #courses-container {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
-
-            footer {
-                flex-direction: column;
-                gap: 0.8rem;
-                padding: 1rem;
-            }
-
-            footer button {
-                width: 100%;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .course-actions {
-                flex-wrap: wrap;
-            }
-
-            .btn {
-                flex: 1 1 100%;
-            }
-
-            .heart-btn {
-                flex: 0 0 auto;
-            }
-        }
-
-        /* Loading State */
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            font-style: italic;
-            color: var(--text-light);
-            grid-column: 1 / -1;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            grid-column: 1 / -1;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 25px;
-            background-color: var(--success-color);
+            background:var(--primary-color);
             color: white;
+            padding: 10px 20px;
+            text-decoration: none;
             border-radius: 5px;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transform: translateX(200%);
-            transition: transform 0.3s ease;
+            margin-top: 10px;
         }
-
-        .notification.show {
-            transform: translateX(0);
+        
+        .btn:hover {
+            background: var(--secondary-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
         }
     </style>
 </head>
-
 <body>
     <header>
-        <div class="logo">
-            <i class="fas fa-graduation-cap"></i>
-            <span>NexGen Institute</span>
-        </div>
-        
-        <div id="headSearch">
-            <i class="fas fa-search"></i>
-            <input type="text" id="search" placeholder="Search by Course name...">
-        </div>
-        
-        <nav class="navbar">
-            <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-            <ul class="menu" id="menu">
-                <li><a href="./html.html">HTML</a></li>
-                <li><a href="./css.html">CSS</a></li>
-                <li><a href="./javascript.html">JavaScript</a></li>
-                <li><a href="./python.html">PYTHON</a></li>
-                <li class="badge">
-                    <a href="fav.html" id="favourites-link">
-                        <i class="fas fa-heart"></i>
-                        <span class="badge-count" id="favorites-count">0</span>
-                    </a>
-                </li>
-                <li class="badge">
-                    <a href="cart.html" id="cart-link">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="badge-count" id="cart-count">0</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        
-        <div class="toggle-container">
-            <button id="theme-toggle"><i class="fas fa-sun"></i></button>
-        </div>
-        
-        <div class="dropdown-container">
-            <button class="user-btn"><i class="far fa-user"></i></button>
-            <div class="dropdown" id="dropdownMenu">
-                <a href="./profile.html">My Profile</a>
-                <a href="cart.html">My Courses</a>
-                <a href="./index.html">LogOut</a>
-            </div>
-        </div>
+        <a href="filter.html" class="back-link">← Back</a>
+        <h1>Welcome to Learning Hub</h1><br>
+        <p></p>
     </header>
-
-    <h2>Available HTML Courses</h2>
-    <div id="courses-container"></div>
-
-    <footer>
-        <button onclick="Quiz()">Quiz</button>
-        <!-- <button onclick="access()">Assignments</button>
-        <button onclick="access()">Assessment</button> -->
-    </footer>
+    <nav>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="Quiz1.html">Take Quiz</a></li>
+        </ul>
+    </nav>
     
-    <div class="course-container">
-        <p>"Your journey to expertise starts here. Secure your spot in this course now!"</p>
-        <button class="buy-btn" onclick="course()">BUY NOW</button>
+    
+    <div class="container">
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>Welcome to Learning Hub, an interactive platform designed to enhance your knowledge across various subjects. Our mission is to provide accessible, engaging, and effective learning experiences for everyone.</p>
+            <p>Whether you're a student looking to supplement your studies or a lifelong learner exploring new topics, Learning Hub has something for you.</p>
+        </section>
+        
+        <section id="features">
+            <h2>Features</h2>
+            <div>
+                <h3>Interactive Lessons</h3>
+                <p>Engage with dynamic content that adapts to your learning style.</p>
+            </div>
+            <div>
+                <h3>Comprehensive Quizzes</h3>
+                <p>Test your knowledge with our interactive quizzes that provide immediate feedback.</p>
+            </div>
+            <div>
+                <h3>Progress Tracking</h3>
+                <p>Monitor your learning journey and see how much you've improved over time.</p>
+            </div>
+        </section>
+        
+        <section id="details">
+            <h2>Detailed Information</h2>
+            <p>Our platform covers a wide range of subjects including:</p>
+            <ul>
+                <li>Science and Technology</li>
+                <li>Mathematics</li>
+                <li>History and Social Studies</li>
+                <li>Language Arts</li>
+                <li>Professional Development</li>
+            </ul>
+            <p>Each course is designed by subject matter experts and follows best practices in educational pedagogy.</p>
+        </section>
+        
+        <section>
+            <h2>Ready to Test Your Knowledge?</h2>
+            <p>Take our interactive quiz to see how much you've learned!</p>
+            <a href="Quiz1.html" class="btn">Start Quiz Now</a>
+        </section>
     </div>
     
-    <div class="notification" id="notification"></div>
-
-    <script>
-        // Cart and Favorites functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        
-        // Update badge counts
-        function updateBadges() {
-            document.getElementById('cart-count').textContent = cart.length;
-            document.getElementById('favorites-count').textContent = favorites.length;
-        }
-        
-        // Show notification
-        function showNotification(message, isSuccess = true) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.style.backgroundColor = isSuccess ? 'var(--success-color)' : 'var(--accent-color)';
-            notification.classList.add('show');
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Add to cart function
-        function addToCart(course) {
-            if (!cart.some(item => item.title === course.title)) {
-                cart.push(course);
-                localStorage.setItem('cart', JSON.stringify(cart));
-                updateBadges();
-                showNotification(`${course.title} added to your courses!`);
-            } else {
-                showNotification(`${course.title} is already in your courses!`, false);
-            }
-        }
-        
-        // Add to favorites function
-        function addToFavorites(course) {
-            if (!favorites.some(item => item.title === course.title)) {
-                favorites.push(course);
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-                updateBadges();
-                showNotification(`${course.title} added to favorites!`);
-            } else {
-                showNotification(`${course.title} is already in favorites!`, false);
-            }
-        }
-        
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-            themeToggle.innerHTML = document.body.dataset.theme === 'dark' ? 
-                '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        });
-        
-        // Mobile menu toggle
-        document.getElementById("menu-toggle").addEventListener("click", function() {
-            document.getElementById("menu").classList.toggle("show");
-        });
-        
-        // Initialize badges
-        updateBadges();
-
-        function course() {
-            let confirmPurchase = confirm("Are you sure you want to buy this course?");
-            if (confirmPurchase) {
-                alert("Thank you for your interest! Redirecting to payment...");
-                window.location.href = ""; // Add your payment link here
-            } else {
-                alert("No worries! You can enroll anytime.");
-            }
-        }
-
-        function access() {
-            let confirmAccess = confirm("Are you sure");
-            if (confirmAccess) {
-                window.location.href = "";
-            } else {
-                alert("Please BUY the course to access the content")
-            }
-        }
-
-        function Quiz() {
-            window.location.href = "./Quiz1.html"
-        }
-
-        // Fetch and filter HTML courses from API
-        async function fetchHTMLCourses() {
-            try {
-                const response = await fetch("https://abundant-rural-danger.glitch.me/Free");
-                const data = await response.json();
-
-                const htmlCourses = data.filter(course =>
-                    course.title.toLowerCase().includes("html") ||
-                    course.description.toLowerCase().includes("html")
-                );
-
-                const container = document.getElementById("courses-container");
-
-                if (htmlCourses.length === 0) {
-                    container.innerHTML = '<div class="empty-state"><i class="fas fa-book-open"></i><p>No HTML courses found.</p></div>';
-                    return;
-                }
-
-                htmlCourses.forEach(course => {
-                    const courseCard = document.createElement("div");
-                    courseCard.className = "course-card";
-
-                    courseCard.innerHTML = `
-                        <div class="course-img-container">
-                            <img class="course-img" src="${course.pic || 'https://via.placeholder.com/300x180?text=Course+Image'}" alt="${course.title}">
-                        </div>
-                        <div class="course-content">
-                            <span class="course-category">${course.category || 'Web Development'}</span>
-                            <h3 class="course-title">${course.title}</h3>
-                            <p class="course-description">${course.description || 'No description available.'}</p>
-                            <div class="course-meta">
-                                <span class="course-level">${course.level || 'Beginner'}</span>
-                                <span class="course-price">${course.price || 'Free'}</span>
-                            </div>
-                            <div class="course-actions">
-                                <button class="btn buy-btn" onclick="addToCart(${JSON.stringify(course).replace(/"/g, '&quot;')})">
-                                    <i class="fas fa-shopping-cart"></i> Enroll
-                                </button>
-                                <button class="btn heart-btn" onclick="addToFavorites(${JSON.stringify(course).replace(/"/g, '&quot;')})">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                            </div>
-                            <a href="${course.link || '#'}" class="course-link">View Course Details</a>
-                        </div>
-                    `;
-
-                    container.appendChild(courseCard);
-                });
-
-            } catch (error) {
-                console.error("Error fetching courses:", error);
-                document.getElementById("courses-container").innerHTML = 
-                    '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>Failed to load courses. Please try again later.</p></div>';
-            }
-        }
-
-        // Load HTML courses when page loads
-        window.onload = fetchHTMLCourses;
-    </script>
+    <footer>
+        <p>&copy; 2025 Learning Hub. All rights reserved.</p>
+    </footer>
 </body>
-
 </html>

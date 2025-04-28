@@ -6,6 +6,15 @@
     <title>JavaScript Introduction</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
      <style>
+        :root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+}
        *{
         margin: 0px;
         padding: 0px;
@@ -21,18 +30,26 @@ body {
 }
 
 header {
-    background: #2c3e50;
+    background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
     color: white;
     padding: 1rem 0;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
-
+header a{
+    text-decoration: none;
+    padding: 10px;
+}
+header h1{
+    margin: auto;
+}
 nav ul {
     padding: 0;
     list-style: none;
     display: flex;
     justify-content: center;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color:#333333;
     padding: 10px;
 }
 
@@ -221,13 +238,13 @@ code {
     <header>
         <a href="./filter.html" class="back">← Back</a>
         <h1>Welcome to JavaScript</h1>
-        <nav>
-            <ul>
-                <li><a href="#intro">Introduction</a></li>
-                <li><a href="#features">Features</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#features">Features</a></li>
+        </ul>
+    </nav>
 
     <main>
         <section id="intro" class="section">

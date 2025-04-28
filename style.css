@@ -344,7 +344,14 @@ header p:hover {
     .nav-links a {
         font-size: 14px; /* Smaller font size for navigation links */
     }
-
+    header nav a,
+    #pages {
+        font-size: 12px;
+    }
+    #pages{
+        padding-top: 5px;
+    }
+    
     /* Dropdown Menu */
     .dropdown a {
         font-size: 12px; /* Smaller font size for dropdown links */
@@ -817,6 +824,7 @@ h1::after {
         width: 90%;
         height: auto;
     }
+   
 }
 
 /* ======= Animation for #cont3 ======= */
@@ -1353,8 +1361,21 @@ input[type="email"]::placeholder {
     #users {
         grid-template-columns: 1fr;
     }
+    #cont1 h1{
+        font-size: 2.5rem;
+    }
 }
 
+@media (max-width:500px) {
+    
+     #cont1 h1{
+        font-size: 2rem;
+    }
+    #cont2 p{
+        text-align: justify;
+    }
+
+}
 /* Container Styling */
 #container,
 #blog {

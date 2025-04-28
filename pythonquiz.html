@@ -19,7 +19,10 @@
             color: #fff;
             /* padding: 1rem 0; */
             text-align: center;
+            display: flex;
+            justify-content: space-between;
         }
+
         
         .container {
             width: 80%;
@@ -35,7 +38,8 @@
         }
         
         h1 {
-            margin: 0;
+            margin: auto;
+            
         }
         
         .quiz-container {
@@ -115,7 +119,7 @@
         
         .back-link {
             display: inline-block;
-            color: #61605d;
+            color: #fff;
             text-decoration: none;
             margin-top: 20px;
             font-weight: bold;
@@ -124,18 +128,84 @@
         .back-link:hover {
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+    }
+    
+    p, li, a, code {
+      font-size: 1.05rem;
+    }
+  }
+
+  /* Small devices (landscape phones, 576px and up) */
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+    
+    p, li, a, code {
+      font-size: 1rem;
+    }
+    
+    .quiz-link {
+      font-size: 1rem;
+      padding: 0.7rem 1.5rem;
+    }
+  }
+
+  /* Extra small devices (portrait phones, less than 576px) */
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 1.2rem;
+    }
+    
+    h2 {
+      font-size: 1rem;
+    }
+    
+    h3 {
+      font-size: 1rem;
+    }
+    
+    p, li, a, code {
+      font-size: 0.95rem;
+    }
+    
+    header a {
+      font-size: 0.95rem;
+    }
+    .back-link{
+        font-size: 12px;
+    }
+  }
+
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
+            <a href="python.html" class="back-link">← Back</a>
             <h1>Python Programming Quiz</h1>
-            <p>Test your knowledge of Python</p>
-        </div>
+
     </header>
     
     <div class="container">
-        <a href="python.html" class="back-link">← Back to Python Introduction</a>
         
         <div class="quiz-container">
             <div id="quiz"></div>
