@@ -24,14 +24,20 @@ a {
 header {
     background: linear-gradient(135deg, #A6B37D, #134B70);
     color: white;
-    padding: 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
 }
 
 header h1 {
     font-size: 2.5rem;
     font-weight: 600;
+}
+header a{
+    position: fixed;
+    top: 30px;
+    left: 20px;
 }
 
 .p {
@@ -49,11 +55,15 @@ main {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     text-align: center;
     padding: 1rem;
     background-color: #333;
     color: white;
     margin-top: 2rem;
+    width: 100%;
 }
 
 /* Cart Container */
@@ -63,6 +73,7 @@ footer {
     gap: 1.5rem;
     justify-content: center;
     padding: 1rem;
+    margin-bottom: 2rem;
 }
 
 /* Cart Item */

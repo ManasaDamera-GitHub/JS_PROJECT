@@ -300,46 +300,70 @@ document.getElementById("menu-toggle").addEventListener("click", function () {
   document.getElementById("menu").classList.toggle("show");
 });
 
-// Function to add a course to the cart
-function addToCart(course) {
-  const confirmAdd = confirm(`Add "${course.title}" to cart?`);
-  if (confirmAdd) {
-    if (!cart.some((item) => item.title === course.title)) {
-      cart.push(course);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert(`${course.title} added to cart!`);
-    } else {
-      alert(`${course.title} is already in the cart!`);
-    }
-  } else {
-    alert("Action canceled.");
+// Toast function (simplified)
+function showToast(message, type = 'info', duration = 3000) {
+  const toastContainer = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  
+  toast.textContent = message;
+  
+  // Add close button
+  const closeButton = document.createElement('button');
+  closeButton.className = 'toast-close';
+  closeButton.innerHTML = '&times;';
+  closeButton.addEventListener('click', () => toast.remove());
+  
+  toast.appendChild(closeButton);
+  toastContainer.appendChild(toast);
+  
+  // Auto-remove after duration
+  if (duration > 0) {
+    setTimeout(() => toast.remove(), duration);
   }
 }
 
-// favourite buttons
-function addToFavourites(course, button) {
-  const confirmAdd = confirm(`Add "${course.title}" to favourites?`);
-  if (confirmAdd) {
-    const index = favourites.findIndex((item) => item.title === course.title);
-
-    if (index === -1) {
-      // Add to favourites
-      favourites.push(course);
-      button.innerHTML = '<i class="fas fa-heart"></i>'; // Filled heart
-      button.classList.add("active");
-      alert(`${course.title} added to favourites!`);
-    } else {
-      // Remove from favourites
-      favourites.splice(index, 1);
-      button.innerHTML = '<i class="far fa-heart"></i>'; // Outline heart
-      button.classList.remove("active");
-      alert(`${course.title} removed from favourites!`);
-    }
-
-    localStorage.setItem("favourites", JSON.stringify(favourites));
+// Simplified addToCart function with direct toasts
+function addToCart(course) {
+  if (!cart.some((item) => item.title === course.title)) {
+    cart.push(course);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showToast(`✓ Added "${course.title}" to cart`, 'success');
   } else {
-    alert("Action canceled.");
+    showToast(`"${course.title}" is already in your cart`, 'warning');
   }
+}
+
+// Toggle favourites with visual feedback
+function addToFavourites(course, button) {
+  const index = favourites.findIndex(item => item.title === course.title);
+  
+  if (index === -1) {
+    // Add to favourites
+    favourites.push(course);
+    button.innerHTML = '<i class="fas fa-heart"></i>'; // Solid heart
+    button.classList.add("active");
+    showToast(`Added "${course.title}" to favourites`, 'success');
+  } else {
+    // Remove from favourites
+    favourites.splice(index, 1);
+    button.innerHTML = '<i class="far fa-heart"></i>'; // Outline heart
+    button.classList.remove("active");
+    showToast(`Removed "${course.title}" from favourites`, 'info');
+  }
+  
+  localStorage.setItem("favourites", JSON.stringify(favourites));
+}
+
+// Minimal toast notification
+function showToast(message, type = 'info') {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  
+  document.getElementById('toast-container').appendChild(toast);
+  
+  setTimeout(() => toast.remove(), 3000);
 }
 
 // Event listener for search bar filtering data
@@ -370,33 +394,33 @@ search.addEventListener("keyup", function () {
 });
 
 // Theme toggle functionality
-const toggleButton = document.getElementById("theme-toggle");
-const currentTheme = localStorage.getItem("theme");
+// const toggleButton = document.getElementById("theme-toggle");
+// const currentTheme = localStorage.getItem("theme");
 
-if (currentTheme) {
-  document.documentElement.setAttribute("data-theme", currentTheme);
-  toggleButton.innerHTML =
-    currentTheme === "dark"
-      ? '<i class="fas fa-moon"></i>'
-      : '<i class="fas fa-sun"></i>';
-} else {
-  document.documentElement.setAttribute("data-theme", "light");
-  toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
-}
+// if (currentTheme) {
+//   document.documentElement.setAttribute("data-theme", currentTheme);
+//   toggleButton.innerHTML =
+//     currentTheme === "dark"
+//       ? '<i class="fas fa-moon"></i>'
+//       : '<i class="fas fa-sun"></i>';
+// } else {
+//   document.documentElement.setAttribute("data-theme", "light");
+//   toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+// }
 
-toggleButton.addEventListener("click", function () {
-  let theme = document.documentElement.getAttribute("data-theme");
+// toggleButton.addEventListener("click", function () {
+//   let theme = document.documentElement.getAttribute("data-theme");
 
-  if (theme === "light") {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
-    toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-    toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
-  }
-});
+//   if (theme === "light") {
+//     document.documentElement.setAttribute("data-theme", "dark");
+//     localStorage.setItem("theme", "dark");
+//     toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
+//   } else {
+//     document.documentElement.setAttribute("data-theme", "light");
+//     localStorage.setItem("theme", "light");
+//     toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
+//   }
+// });
 
 // ---------- MODAL / DETAIL-VIEW SECTION ----------
 

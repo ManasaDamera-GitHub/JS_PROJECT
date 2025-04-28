@@ -24,9 +24,13 @@ a {
 header {
     background: linear-gradient(135deg, #A6B37D, #134B70);
     color: white;
-    padding: 2rem;
+    padding: 1rem 2rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 header h1 {
@@ -34,13 +38,19 @@ header h1 {
     font-weight: 600;
     animation: fadeIn 1s ease-in-out;
 }
+header a{
+    position: fixed;
+    top: 30px;
+    left: 20px;
+}
 
 .p {
     font-size: 1.5rem;
-    margin-top: 2.5rem;
+    margin-top: 4.5rem;
     text-align: center;
     font-style: italic;
     animation: fadeIn 1.5s ease-in-out;
+
 }
 
 @keyframes fadeIn {
@@ -69,6 +79,7 @@ main {
     gap: 1.5rem;
     justify-content: center;
     padding: 1rem;
+    margin: 2rem;
 }
 
 /* Favorite Item */
@@ -132,6 +143,7 @@ main {
     font-size: 1.25rem;
     font-weight: 500;
     color: #2575fc;
+    
 }
 
 /* Remove Favourite Button */
@@ -156,14 +168,27 @@ main {
 
 /* Empty Favourites Message */
 #favourites-container:empty::before {
-    content: "Your favourites list is empty.";
+    content: "Your favorites list is empty.";
     display: block;
     text-align: center;
     font-size: 1.2rem;
     color: #666;
     margin-top: 2rem;
     animation: fadeIn 1s ease-in-out;
+    font-weight: bold;
 }
+/* Optional Fade-In Animation (same as above if reused) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* Footer */
 footer {
@@ -173,6 +198,9 @@ footer {
     color: white;
     margin-top: 2rem;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Heart Button (Favourites) */
@@ -192,4 +220,26 @@ footer {
 
 .heart-btn.active {
     color: #ff4d4d;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 0.75rem;
+    }
+    
+    .back-link {
+        font-size: 0.9rem;
+        left: 0.75rem;
+        top: 0.75rem;
+    }
+    
+    header h1 {
+        font-size: 1.25rem;
+        padding-top: 0.5rem; /* Add some space if the back link is on same line */
+    }
+    
+    #favourites-container {
+        margin: 1rem ;
+    }
+
 }
